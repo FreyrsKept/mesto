@@ -93,3 +93,147 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+.profile__description {
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 336px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.profile__add {
+  margin: 0 0 0 auto;
+  padding: 0;
+  min-width: 150px;
+  min-height: 50px;
+  border: 2px solid #FFF;
+  border-radius: 2px;
+  transition: all 0.4s ease-in-out;
+  background: transparent url('../images/icons/add.svg') no-repeat center;
+}
+
+.profile__add:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.footer {
+  margin: 0 auto 60px auto;
+  max-width: 880px;
+}
+
+.footer__description {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+}
+
+.popup {
+  align-items: center;
+  background-color: rgba(0,0,0,.5);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: visibility .2s linear,opacity .2s linear;
+}
+
+.profile__popup {
+  visibility: hidden;
+}
+
+.popup__container {
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 430px;
+  position: relative;
+  width: 100%;
+}
+
+.popup__form {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: calc(100% - 72px);
+  padding: 0;
+}
+
+.popup__title {
+  font-family: Inter,Arial,Helvetica,sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  margin: 0;
+  max-width: calc(100% - 28px);
+  padding-bottom: 35px;
+  padding-top: 33px;
+}
+
+.popup__input {
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  font-family: Inter,Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  padding-bottom: 13px;
+  margin-bottom: 30px;
+}
+
+
+.popup__button {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  font-family: Inter,Arial,Helvetica,sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  margin-top: 18px;
+  margin-bottom: 36px;
+  min-height: 50px;
+  outline: none;
+  transition: .2s;
+  width: 100%;
+}
+
+.popup__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.popup__close {
+  background-color: transparent;
+  background-image: url(../images/icons/close.svg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  display: flex;
+  height: 40px;
+  outline: none;
+  padding: 0;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  transform: rotate(45deg);
+  transition: .2s;
+  width: 40px;
+}
+
+.popup__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
