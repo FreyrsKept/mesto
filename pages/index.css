@@ -1,304 +1,37 @@
-.body {
-  background-color: #000;
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-.header {
-  margin: 45px auto 40px auto;
-  padding: 0;
-  padding-bottom: 41px;
-  max-width: 880px;
-  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
-  box-sizing: border-box;
-}
-
-.profile {
-  margin: 0 auto 50px auto;
-  padding: 0;
-  max-width: 880px;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.profile__avatar-area {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.profile__avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-
-.profile__avatar-edit {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  background: none;
-  border: none;
-  border-radius: 50%;
-}
-
-.profile__description {
-  color: #ffff;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-}
-
-.profile__info {
-  max-width: 336px;
-  margin: 0 0 0 30px;
-  padding: 0;
-  display: grid;
-  grid-template-columns: minmax(min-content, max-content)
-                         minmax(min-content, max-content);
-  align-items: center;
-  box-sizing: border-box;
-  gap: 16px 18px;
-}
-
-.profile__name {
-  color: white;
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
-  margin: 0;
-  padding: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.profile__name-edit {
-  margin: 0;
-  padding: 0;
-  min-width: 24px;
-  min-height: 24px;
-  border: 1px solid #FFF;
-  background: transparent url('../images/icons/Vector.svg') no-repeat center;
-  transition: all 0.4s ease-in-out;
-}
-
-.profile__name-edit:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
-.profile__description {
-  margin: 0;
-  padding: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 336px;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-}
-
-.profile__add {
-  margin: 0 0 0 auto;
-  padding: 0;
-  min-width: 150px;
-  min-height: 50px;
-  border: 2px solid #FFF;
-  border-radius: 2px;
-  transition: all 0.4s ease-in-out;
-  background: transparent url('../images/icons/add.svg') no-repeat center;
-}
-
-.profile__add:hover {
-  opacity: 0.6;
-  cursor: pointer;
-}
-
-.footer {
-  margin: 0 auto 60px auto;
-  max-width: 880px;
-}
-
-.footer__description {
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #545454;
-}
-
-.popup {
-  align-items: center;
-  background-color: rgba(0,0,0,.5);
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  transition: visibility .2s linear,opacity .2s linear;
-}
-
-.profile__popup {
-  visibility: hidden;
-}
-
-.popup__container {
-  background-color: #fff;
-  border-radius: 10px;
-  max-width: 430px;
-  position: relative;
-  width: 100%;
-  justify-items: center;
-}
-
-.popup__form {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: calc(100% - 72px);
-  padding: 0;
-}
-
-.popup__title {
-  font-family: Inter,Arial,Helvetica,sans-serif;
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 29.05px;
-  margin: 0;
-  max-width: calc(100% - 28px);
-  padding-bottom: 35px;
-  padding-top: 33px;
-}
-
-.popup__input {
-  border: none;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  font-family: Inter,Arial,Helvetica,sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16.94px;
-  padding-bottom: 13px;
-  margin-bottom: 30px;
-}
-
-
-.popup__submit {
-  background-color: #000;
-  border: none;
-  color: #fff;
-  font-family: Inter,Arial,Helvetica,sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21.78px;
-  margin-top: 18px;
-  margin-bottom: 36px;
-  min-height: 50px;
-  outline: none;
-  transition: .2s;
-  width: 100%;
-}
-
-.popup__submit:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.popup__close {
-  background-color: transparent;
-  background-image: url(../images/icons/close.svg);
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border: none;
-  display: flex;
-  height: 40px;
-  outline: none;
-  padding: 0;
-  position: absolute;
-  right: -40px;
-  top: -40px;
-  transform: rotate(45deg);
-  transition: .2s;
-  width: 40px;
-}
-
-.popup__close:hover {
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.cards__template {
-  gap: 20px 17px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,282px);
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 880px;
-  padding: 50px 0 66px;
-}
-
-.cards__element {
-  background-color: #fff;
-  border-radius: 10px;
-  display: grid;
-  grid-template-rows: 282px 1fr;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.cards__image {
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
-  width: 100%;
-}
-
-.cards__info {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin: 25px 15px 31px 21px;
-  overflow: hidden;
-}
-
-.cards__title {
-  font-family: Inter,Arial,Helvetica,sans-serif;
-  margin: 0;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-  max-width: 90%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.cards__like-button {
-  background-color: transparent;
-  background-image: url(../images/icons/like.svg);
-  border: none;
-  height: 19px;
-  outline: none;
-  padding: 0;
-  transition: .2s;
-  width: 22px;
-}
-
-.cards__like-button:hover {
-  cursor: pointer;
-  opacity: .5;
-}
+/* Основные */
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/body/body.css);
+/* шапка */
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+/* профиль */
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__add/profile__add.css);
+@import url(../blocks/profile/__avatar-area/profile__avatar-area.css);
+@import url(../blocks/profile/__avatar-edit/profile__avatar-edit.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__description/profile__description.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name-edit/profile__name-edit.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__popup/profile__popup.css);
+/* карточки */
+@import url(../blocks/cards/__element/cards__element.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__info/cards__info.css);
+@import url(../blocks/cards/__like-button/cards__like-button.css);
+@import url(../blocks/cards/__template/cards__template.css);
+@import url(../blocks/cards/__title/cards__title.css);
+/* подвал */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__description/footer__description.css);
+/* popup */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__title/popup__title.css);

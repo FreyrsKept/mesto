@@ -1,90 +1,100 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <link href="./pages/normalize.css" rel="stylesheet">
     <link href="./pages/index.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
 </head>
+
 <body class="body">
- <main>
-    <header class="header">
-        <img src="images\logo.svg" class="header__logo">
-    </header>
-    <section class="profile">
-        <div class="profile__avatar-area">
-            <img src="./images/profile__avatar.jpg" class="profile__avatar" alt="Фото профиля">
-            <button type="button" class="profile__avatar-edit" label="Редактировать аватар профиля"></button>
+    <main>
+        <header class="header">
+            <img src="images\logo.svg" class="header__logo">
+        </header>
+        <section class="profile">
+            <div class="profile__avatar-area">
+                <img src="./images/profile__avatar.jpg" class="profile__avatar" alt="Фото профиля">
+                <button type="button" class="profile__avatar-edit" label="Редактировать аватар профиля"></button>
+            </div>
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button type="button" class="profile__name-edit" label="Редактировать имя профиля"></button>
+                <p class="profile__description">Исследователь Океана</p>
+            </div>
+            <button class="profile__add" label="Добавить место"></button>
+        </section>
+        <section class="cards">
+            <ul class="cards__template">
+                <li class="cards__element">
+                    <img class="cards__image"
+                        src="https://top10.travel/wp-content/uploads/2017/09/vinogradovskij-most.jpg" alt="">
+                    <div class="cards__info">
+                        <h2 class="cards__title">Виноградовский мост</h2>
+                        <button class="cards__like-button"></button>
+                    </div>
+                </li>
+                <li class="cards__element">
+                    <img class="cards__image" src="https://top10.travel/wp-content/uploads/2017/09/tsar-ryba.jpg"
+                        alt="">
+                    <div class="cards__info">
+                        <h2 class="cards__title">Царь рыба</h2>
+                        <button class="cards__like-button"></button>
+                    </div>
+                </li>
+                <li class="cards__element">
+                    <img class="cards__image"
+                        src="https://top10.travel/wp-content/uploads/2017/09/zapovednik-stolby.jpg" alt="">
+                    <div class="cards__info">
+                        <h2 class="cards__title">Красноярские столбы Красноярские столбы Красноярские столбы </h2>
+                        <button class="cards__like-button"></button>
+                    </div>
+                </li>
+                <li class="cards__element">
+                    <img class="cards__image"
+                        src="https://fikiwiki.com/uploads/posts/2022-02/1645033331_1-fikiwiki-com-p-krasivie-kartinki-na-smartfon-1.jpg"
+                        alt="">
+                    <div class="cards__info">
+                        <h2 class="cards__title">Вид на океан</h2>
+                        <button class="cards__like-button"></button>
+                    </div>
+                </li>
+                <li class="cards__element">
+                    <img class="cards__image" src="https://www.russiadiscovery.ru/upload/files/files/Altaiskie_gory.jpg"
+                        alt="">
+                    <div class="cards__info">
+                        <h2 class="cards__title">Горы алтая</h2>
+                        <button class="cards__like-button"></button>
+                    </div>
+                </li>
+                <li class="cards__element">
+                    <img class="cards__image"
+                        src="https://assets.community.lomography.com/ca/d5e3b43a75575e8ec79b18eb5747ed1a96f30c/1216x789x1.jpg?auth=89bb7a413857bb6927c5e5289102859143289dd1"
+                        alt="">
+                    <div class="cards__info">
+                        <h2 class="cards__title">FUJIFILM C200 PHOTO</h2>
+                        <button class="cards__like-button"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__description">© 2023 Mesto Russia</p>
+    </footer>
+    <div class="popup profile__popup">
+        <div class="popup__container">
+            <form class="popup__form">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input" value="Жак-Ив Кусто">
+                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" value="Исследователь Океана">
+                <button type="submit" class="popup__submit">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close" aria-label="Закрыть"></button>
         </div>
-        <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__name-edit" label="Редактировать имя профиля"></button>
-            <p class="profile__description">Исследователь Океана</p>
-        </div>
-        <button class="profile__add" label="Добавить место"></button>
-    </section>
-    <section class="cards">
-        <ul class="cards__template">
-            <li class="cards__element">
-                <img class="cards__image" src="https://top10.travel/wp-content/uploads/2017/09/vinogradovskij-most.jpg" alt="">
-                <div class="cards__info">
-                     <h2 class="cards__title">Виноградовский мост</h2>
-                     <button class="cards__like-button"></button>
-                </div>
-            </li>
-            <li class="cards__element">
-                <img class="cards__image" src="https://top10.travel/wp-content/uploads/2017/09/tsar-ryba.jpg" alt="">
-                <div class="cards__info">
-                    <h2 class="cards__title">Царь рыба</h2>
-                    <button class="cards__like-button"></button>
-                </div>
-            </li>
-            <li class="cards__element">
-                <img class="cards__image" src="https://top10.travel/wp-content/uploads/2017/09/zapovednik-stolby.jpg" alt="">
-                <div class="cards__info">
-                    <h2 class="cards__title">Красноярские столбы Красноярские столбы Красноярские столбы </h2>
-                    <button class="cards__like-button"></button>
-                </div>
-            </li>
-            <li class="cards__element">
-                <img class="cards__image" src="https://fikiwiki.com/uploads/posts/2022-02/1645033331_1-fikiwiki-com-p-krasivie-kartinki-na-smartfon-1.jpg" alt="">
-                <div class="cards__info">
-                    <h2 class="cards__title">Вид на океан</h2>
-                    <button class="cards__like-button"></button>
-                </div>
-            </li>
-            <li class="cards__element">
-                <img class="cards__image" src="https://www.russiadiscovery.ru/upload/files/files/Altaiskie_gory.jpg" alt="">
-                <div class="cards__info">
-                    <h2 class="cards__title">Горы алтая</h2>
-                    <button class="cards__like-button"></button>
-                </div>
-            </li>
-            <li class="cards__element">
-                <img class="cards__image" src="https://assets.community.lomography.com/ca/d5e3b43a75575e8ec79b18eb5747ed1a96f30c/1216x789x1.jpg?auth=89bb7a413857bb6927c5e5289102859143289dd1" alt="">
-                <div class="cards__info">
-                    <h2 class="cards__title">FUJIFILM C200 PHOTO</h2>
-                    <button class="cards__like-button"></button>
-                </div>
-            </li>
-        </ul>
-    </section>
- </main>
- <footer class="footer">
-    <p class="footer__description">© 2023 Mesto Russia</p>
-  </footer>
-  <div class="popup profile__popup">
-    <div class="popup__container">
-        <form class="popup__form">
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input" value="">
-            <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" value="">
-            <button type="submit" class="popup__submit">Сохранить</button>
-        </form>
-        <button type="button" class="popup__close" aria-label="Закрыть"></button>
     </div>
-  </div>
-  <script src="./pages/index.js"></script>
+    <script src="./pages/index.js"></script>
 </body>
+
 </html>

@@ -31,9 +31,10 @@ let description = document.querySelector('.profile__description');
 
 userName.textContent = nameInput;
 description.textContent = jobInput;
-
 }
 
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormSubmit, function(){
+    profilePopup.classList.add('profile__popup')
+});
