@@ -159,6 +159,7 @@
   max-width: 430px;
   position: relative;
   width: 100%;
+  justify-items: center;
 }
 
 .popup__form {
@@ -193,7 +194,7 @@
 }
 
 
-.popup__button {
+.popup__submit {
   background-color: #000;
   border: none;
   color: #fff;
@@ -209,7 +210,7 @@
   width: 100%;
 }
 
-.popup__button:hover {
+.popup__submit:hover {
   cursor: pointer;
   opacity: 0.8;
 }
@@ -236,4 +237,68 @@
 .popup__close:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+.cards__template {
+  gap: 20px 17px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,282px);
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 880px;
+  padding: 50px 0 66px;
+}
+
+.cards__element {
+  background-color: #fff;
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 282px 1fr;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.cards__image {
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+}
+
+.cards__info {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 15px 31px 21px;
+  overflow: hidden;
+}
+
+.cards__title {
+  font-family: Inter,Arial,Helvetica,sans-serif;
+  margin: 0;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cards__like-button {
+  background-color: transparent;
+  background-image: url(../images/icons/like.svg);
+  border: none;
+  height: 19px;
+  outline: none;
+  padding: 0;
+  transition: .2s;
+  width: 22px;
+}
+
+.cards__like-button:hover {
+  cursor: pointer;
+  opacity: .5;
 }
