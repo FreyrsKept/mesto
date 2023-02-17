@@ -12,6 +12,7 @@ closeProfileButton.addEventListener('click', function(){
 });
 
 
+
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__form'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
