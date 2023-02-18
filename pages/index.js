@@ -1,23 +1,19 @@
 let editProfileButton = document.querySelector('.profile__name-edit');
-const profilePopup = document.querySelector('.profile__popup');
+const profilePopup = document.querySelector('.popup');
 
 editProfileButton.addEventListener('click', function() {
-    profilePopup.classList.remove('profile__popup')
+    profilePopup.classList.add('popup_opened')
 });
 
 let closeProfileButton = document.querySelector('.popup__close');
 
 closeProfileButton.addEventListener('click', function(){
-    profilePopup.classList.add('profile__popup')
+    profilePopup.classList.remove('popup_opened')
 });
 
-
-
-// Находим форму в DOM
-let formElement = document.querySelector('.popup__form'); // Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-let nameInput = document.querySelector('#username-input'); // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('#description-input'); // Воспользуйтесь инструментом .querySelector()
+let formElement = document.querySelector('.popup__form');
+let nameInput = document.querySelector('#username-input');
+let jobInput = document.querySelector('#description-input');
 // Обработчик «отправки» формы
 function handleFormSubmit (evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
@@ -37,5 +33,5 @@ description.textContent = jobInput;
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit, function(){
-    profilePopup.classList.add('profile__popup')
+    profilePopup.classList.remove('popup_opened')
 });
