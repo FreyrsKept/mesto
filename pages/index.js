@@ -33,5 +33,4 @@ description.textContent = jobInput;
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit, function(){
-    profilePopup.classList.remove('popup_opened')
 });

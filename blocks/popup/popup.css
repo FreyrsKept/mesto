@@ -1,11 +1,18 @@
 .popup {
-    align-items: center;
-    background-color: rgba(0,0,0,.5);
-    bottom: 0;
-    justify-content: center;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    display: none;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .5);
+  bottom: 0;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+@media screen and (max-width: 644px) {
+  .popup {
+    max-width: 282px;
+    padding: 25px 22px;
   }
+}
