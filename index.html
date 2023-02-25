@@ -9,21 +9,20 @@
 </head>
 
 <body class="body">
+    <header class="header">
+        <img src="images/logo.svg" class="header__logo" alt="Логотип Проекта">
+    </header>
     <main>
-        <header class="header">
-            <img src="images/logo.svg" class="header__logo" alt="Логотип Проекта">
-        </header>
         <section class="profile">
-            <div class="profile__avatar-area">
-                <img src="./images/profile__avatar.jpg" class="profile__avatar" alt="Фото профиля">
-                <button type="button" class="profile__avatar-edit"></button>
-            </div>
+            <button type="button" class="profile__avatar-edit"><img src="./images/profile__avatar.jpg"
+                    class="profile__avatar" alt="Фото профиля">
+            </button>
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <button type="button" class="profile__name-edit"></button>
                 <p class="profile__description">Исследователь Океана</p>
             </div>
-            <button class="profile__add"></button>
+            <button type="button" class="profile__add"></button>
         </section>
         <section class="cards">
             <ul class="cards__template">
@@ -40,7 +39,7 @@
                         alt="">
                     <div class="cards__info">
                         <h2 class="cards__title">Царь рыба</h2>
-                        <button class="cards__like-button "></button>
+                        <button type="button" class="cards__like-button "></button>
                     </div>
                 </li>
                 <li class="cards__element">
@@ -48,7 +47,7 @@
                         src="https://top10.travel/wp-content/uploads/2017/09/zapovednik-stolby.jpg" alt="">
                     <div class="cards__info">
                         <h2 class="cards__title">Красноярские столбы Красноярские столбы Красноярские столбы </h2>
-                        <button class="cards__like-button "></button>
+                        <button type="button" class="cards__like-button "></button>
                     </div>
                 </li>
                 <li class="cards__element">
@@ -57,7 +56,7 @@
                         alt="">
                     <div class="cards__info">
                         <h2 class="cards__title">Вид на океан</h2>
-                        <button class="cards__like-button"></button>
+                        <button type="button" class="cards__like-button"></button>
                     </div>
                 </li>
                 <li class="cards__element">
@@ -65,7 +64,7 @@
                         alt="">
                     <div class="cards__info">
                         <h2 class="cards__title">Горы алтая</h2>
-                        <button class="cards__like-button"></button>
+                        <button type="button" class="cards__like-button"></button>
                     </div>
                 </li>
                 <li class="cards__element">
@@ -74,7 +73,7 @@
                         alt="">
                     <div class="cards__info">
                         <h2 class="cards__title">FUJIFILM C200 PHOTO</h2>
-                        <button class="cards__like-button"></button>
+                        <button type="button" class="cards__like-button"></button>
                     </div>
                 </li>
             </ul>
@@ -85,17 +84,16 @@
     </footer>
     <div class="popup">
         <div class="popup__container">
-            <form class="popup__form">
+            <form name="popup__form-profile" class="popup__form">
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input" value="Жак-Ив Кусто">
-                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input"
-                    value="Исследователь Океана">
+                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input">
+                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input">
                 <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button type="button" class="popup__close" aria-label="Закрыть"></button>
         </div>
     </div>
-    <script src="./pages/index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
