@@ -1,13 +1,4 @@
 .footer__description {
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #545454;
-}
-
-.footer__description {
   font-style: normal;
   line-height: 22px;
   color: #545454;
