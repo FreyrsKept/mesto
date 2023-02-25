@@ -7,7 +7,7 @@
   justify-items: center;
 }
 
-@media screen and (max-width: 644px) {
+@media screen and (max-width: 510px) {
   .popup__container {
     max-width: 282px;
     max-height: 322px;

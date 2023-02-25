@@ -10,9 +10,8 @@
   display: none;
 }
 
-@media screen and (max-width: 644px) {
+@media screen and (max-width: 510px) {
   .popup {
-    max-width: 282px;
     padding: 25px 22px;
   }
 }
