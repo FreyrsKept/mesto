@@ -15,22 +15,19 @@ function popupClose() {
 closeProfileButton.addEventListener('click', popupClose);
 
 editProfileButton.addEventListener('click', function () {
-   profilePopup.classList.add('popup_opened')
+    profilePopup.classList.add('popup_opened')
     nameInput.value = userName.textContent;
     jobInput.value = description.textContent;
 });
 
-
 function handleFormSubmit(evt) {
     evt.preventDefault();
 
-    let nameInput = document.querySelector('#username-input').value;
-    let jobInput = document.querySelector('#description-input').value;
     console.log(jobInput);
     console.log(nameInput);
 
-    userName.textContent = nameInput;
-    description.textContent = jobInput;
+    userName.textContent = nameInput.value;
+    description.textContent = jobInput.value;
 
     popupClose();
 }
