@@ -12,7 +12,7 @@
     <header class="header">
         <img src="images/logo.svg" class="header__logo" alt="Логотип Проекта">
     </header>
-    <main>
+    <main class="main">
         <section class="profile">
             <button type="button" class="profile__avatar-edit"><img src="./images/profile__avatar.jpg"
                     class="profile__avatar" alt="Фото профиля">
@@ -24,62 +24,20 @@
             </div>
             <button type="button" class="profile__add"></button>
         </section>
-        <section class="cards">
-            <ul class="cards__template">
+        <section class="cards__template">       
+        </section>
+        <template id="cardTemplate">
+            <ul class="cards__templateOLD">
                 <li class="cards__element">
-                    <img class="cards__image"
-                        src="https://top10.travel/wp-content/uploads/2017/09/vinogradovskij-most.jpg"
-                        alt="Виноградовский мост">
+                    <!-- <button class="cards__delete" type="button"></button>  / Кнопка удаления -->
+                    <img class="cards__image" src="#" alt="">
                     <div class="cards__info">
-                        <h2 class="cards__title">Виноградовский мост</h2>
-                        <button type="button" class="cards__like-button"></button>
-                    </div>
-                </li>
-                <li class="cards__element">
-                    <img class="cards__image" src="https://top10.travel/wp-content/uploads/2017/09/tsar-ryba.jpg"
-                        alt="Царь рыба">
-                    <div class="cards__info">
-                        <h2 class="cards__title">Царь рыба</h2>
-                        <button type="button" class="cards__like-button "></button>
-                    </div>
-                </li>
-                <li class="cards__element">
-                    <img class="cards__image"
-                        src="https://top10.travel/wp-content/uploads/2017/09/zapovednik-stolby.jpg"
-                        alt="Красноярские столбы">
-                    <div class="cards__info">
-                        <h2 class="cards__title">Красноярские столбы</h2>
-                        <button type="button" class="cards__like-button "></button>
-                    </div>
-                </li>
-                <li class="cards__element">
-                    <img class="cards__image"
-                        src="https://fikiwiki.com/uploads/posts/2022-02/1645033331_1-fikiwiki-com-p-krasivie-kartinki-na-smartfon-1.jpg"
-                        alt="Вид на океан">
-                    <div class="cards__info">
-                        <h2 class="cards__title">Вид на океан</h2>
-                        <button type="button" class="cards__like-button"></button>
-                    </div>
-                </li>
-                <li class="cards__element">
-                    <img class="cards__image" src="https://www.russiadiscovery.ru/upload/files/files/Altaiskie_gory.jpg"
-                        alt="Горы алтая">
-                    <div class="cards__info">
-                        <h2 class="cards__title">Горы алтая</h2>
-                        <button type="button" class="cards__like-button"></button>
-                    </div>
-                </li>
-                <li class="cards__element">
-                    <img class="cards__image"
-                        src="https://assets.community.lomography.com/ca/d5e3b43a75575e8ec79b18eb5747ed1a96f30c/1216x789x1.jpg?auth=89bb7a413857bb6927c5e5289102859143289dd1"
-                        alt="Кадр снятый на FUJIFILM C200 PHOTO">
-                    <div class="cards__info">
-                        <h2 class="cards__title">FUJIFILM C200 PHOTO</h2>
+                        <h2 class="cards__title">11</h2>
                         <button type="button" class="cards__like-button"></button>
                     </div>
                 </li>
             </ul>
-        </section>
+        </template>
     </main>
     <footer class="footer">
         <p class="footer__description">© 2023 Mesto Russia</p>
