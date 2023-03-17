@@ -36,13 +36,10 @@ addImageButton.addEventListener('click', function(){
 function handleFormSubmit(evt) {
     evt.preventDefault();
 
-    console.log(jobInput);
-    console.log(nameInput);
-
     userName.textContent = nameInput.value;
     description.textContent = jobInput.value;
 
-    popupClose(popup);
+    popup.classList.remove('popup_opened');
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
