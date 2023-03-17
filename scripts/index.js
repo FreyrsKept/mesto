@@ -1,24 +1,37 @@
 let editProfileButton = document.querySelector('.profile__name-edit');
+let addImageButton = document.querySelector('.profile__add');
 let formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('#username-input');
 let jobInput = document.querySelector('#description-input');
-let closeProfileButton = document.querySelector('.popup__close');
+let popupCloseButtonList = document.querySelectorAll('.popup__close');
 let userName = document.querySelector('.profile__name');
 let description = document.querySelector('.profile__description');
 
-const profilePopup = document.querySelector('.popup');
+const ProfilePopup = document.querySelector('.popup_type_profile');
+const imagePopup = document.querySelector('.popup_type_add-card');
 
-function popupClose() {
-    profilePopup.classList.remove('popup_opened')
+function popupClose(popup) {
+    popup.classList.remove('popup_opened');
 };
 
-closeProfileButton.addEventListener('click', popupClose);
+popupCloseButtonList.forEach(function (closeButton) {
+  const popup = closeButton.closest(".popup")
+  closeButton.addEventListener('click', function(){
+    popupClose(popup);
+  })
+});
 
 editProfileButton.addEventListener('click', function () {
-    profilePopup.classList.add('popup_opened')
+  ProfilePopup.classList.add('popup_opened')
     nameInput.value = userName.textContent;
     jobInput.value = description.textContent;
 });
+
+
+addImageButton.addEventListener('click', function(){
+  imagePopup.classList.add('popup_opened');
+});
+
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -29,7 +42,7 @@ function handleFormSubmit(evt) {
     userName.textContent = nameInput.value;
     description.textContent = jobInput.value;
 
-    popupClose();
+    popupClose(popup);
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
@@ -72,16 +85,3 @@ const initialCards = [
     cards.append(newCard)
 
   })  
-
-
-//  const main = document.querySelector('.main')
-
-//   initialCards.forEach(function (card) {
-//     const newCard = document.querySelector('#cardTemplate').content.cloneNode(true)
-//     const cardHeading = newCard.querySelector('.cards__title')
-//     cardHeading.textContent = card.name
-//     const cardImage = newCard.querySelector('.cards__image')
-//     cardImage.setAttribute('src', card.link)
-//     main.append(newCard)
-
-//   })  
