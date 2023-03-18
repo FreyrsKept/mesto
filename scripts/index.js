@@ -6,7 +6,7 @@ let jobInput = document.querySelector('#description-input');
 let popupCloseButtonList = document.querySelectorAll('.popup__close');
 let userName = document.querySelector('.profile__name');
 let description = document.querySelector('.profile__description');
-
+let popup = document.querySelector('.popup');
 const ProfilePopup = document.querySelector('.popup_type_profile');
 const imagePopup = document.querySelector('.popup_type_add-card');
 
@@ -27,11 +27,9 @@ editProfileButton.addEventListener('click', function () {
     jobInput.value = description.textContent;
 });
 
-
 addImageButton.addEventListener('click', function(){
   imagePopup.classList.add('popup_opened');
 });
-
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -39,7 +37,7 @@ function handleFormSubmit(evt) {
     userName.textContent = nameInput.value;
     description.textContent = jobInput.value;
 
-    popup.classList.remove('popup_opened');
+    popupClose(ProfilePopup);
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
