@@ -71,12 +71,20 @@ const initialCards = [
 
   const cards = document.querySelector('.cards')
 
-  initialCards.forEach(function (card) {
+  function createCard(card) {
     const newCard = document.querySelector('#cardTemplate').content.cloneNode(true)
     const cardHeading = newCard.querySelector('.cards__title')
     cardHeading.textContent = card.name
     const cardImage = newCard.querySelector('.cards__image')
     cardImage.setAttribute('src', card.link)
     cards.append(newCard)
+  }
 
-  })  
+  initialCards.forEach(createCard)
+  
+  const newCard = {
+    image: 'https://picsum.photos/200',
+    heading: 'test'
+  }
+
+  createCard(newCard);
