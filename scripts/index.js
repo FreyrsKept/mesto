@@ -77,14 +77,14 @@ const initialCards = [
     cardHeading.textContent = card.name
     const cardImage = newCard.querySelector('.cards__image')
     cardImage.setAttribute('src', card.link)
-    cards.append(newCard)
+    cards.prepend(newCard)
   }
 
   initialCards.forEach(createCard)
   
   const newCard = {
-    image: 'https://picsum.photos/200',
-    heading: 'test'
+    link: 'https://picsum.photos/200',
+    name: 'test'
   }
 
   createCard(newCard);
