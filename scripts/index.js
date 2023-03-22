@@ -42,7 +42,7 @@ function handleFormSubmit(evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
-const initialCards = [
+const data = [
     {
       name: 'Виноградовский мост',
       link: 'https://top10.travel/wp-content/uploads/2017/09/vinogradovskij-most.jpg'
@@ -71,12 +71,20 @@ const initialCards = [
 
   const cards = document.querySelector('.cards')
 
-  initialCards.forEach(function (card) {
+  const createCard = (card) => {
     const newCard = document.querySelector('#cardTemplate').content.cloneNode(true)
     const cardHeading = newCard.querySelector('.cards__title')
     cardHeading.textContent = card.name
     const cardImage = newCard.querySelector('.cards__image')
     cardImage.setAttribute('src', card.link)
-    cards.append(newCard)
+    cards.prepend(newCard)
+  }
 
-  })  
+  data.forEach(createCard)
+
+  const newCard = {
+    iamge: 'https://upload.wikimedia.org/wikipedia/commons/a/a8/Up_multinskoe.jpg',
+    heading: 'test'
+  }
+
+  createCard(newCard);
