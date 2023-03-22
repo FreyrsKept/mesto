@@ -81,7 +81,8 @@ const initialCards = [
   }
 
   initialCards.forEach(createCard)
-  
+  // Делаем функцию которая по сабмиту берет данные из полей, заворачивает в обьект ниже
+  // и вызывает функцию createCard, которая передаёт обьект создавая карточку.
   const newCard = {
     link: 'https://picsum.photos/200',
     name: 'test'
