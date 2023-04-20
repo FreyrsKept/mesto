@@ -22,6 +22,7 @@
 @import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__info/cards__info.css);
 @import url(../blocks/cards/__like-button/cards__like-button.css);
+@import url(../blocks/cards/__delete/cards__delete.css);
 @import url(../blocks/cards/__template/cards__template.css);
 @import url(../blocks/cards/__title/cards__title.css);
 /* подвал */

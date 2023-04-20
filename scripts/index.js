@@ -12,10 +12,12 @@ const description = document.querySelector('.profile__description');
 const popup = document.querySelector('.popup');
 const ProfilePopup = document.querySelector('.popup_type_profile');
 const imagePopup = document.querySelector('.popup_type_add-card');
-// функцией закрытия попапа
+
+// функция закрытия попапа
 function popupClose(popup) {
   popup.classList.remove('popup_opened');
 };
+
 // Закрытие попапа кнопкой
 popupCloseButtonList.forEach(function (closeButton) {
   const popup = closeButton.closest(".popup")
@@ -24,16 +26,19 @@ popupCloseButtonList.forEach(function (closeButton) {
   })
 });
 
+// Открытия попапа профиля с автозаполнением полей
 editProfileButton.addEventListener('click', function () {
   ProfilePopup.classList.add('popup_opened')
   nameInput.value = userName.textContent;
   jobInput.value = description.textContent;
 });
 
+// Открытие попапа добавления фото
 addImageButton.addEventListener('click', function () {
   imagePopup.classList.add('popup_opened');
 });
-// 
+
+// Сабмит изменений в профиле 
 function handleFormSubmit(evt) {
   evt.preventDefault();
 
@@ -45,6 +50,7 @@ function handleFormSubmit(evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
+// Стартовый массив карточек
 const initialCards = [
   {
     name: 'Виноградовский мост',
@@ -74,6 +80,7 @@ const initialCards = [
 
 const cards = document.querySelector('.cards')
 
+// Выводим массив карточек
 function createCard(card) {
   const newCard = document.querySelector('#cardTemplate').content.cloneNode(true)
   const cardHeading = newCard.querySelector('.cards__title')
@@ -81,12 +88,19 @@ function createCard(card) {
   const cardImage = newCard.querySelector('.cards__image')
   cardImage.setAttribute('src', card.link)
   cards.prepend(newCard)
+
+  // Переменная для удаления карточки
+  const deleteCardButton = document.querySelector('.cards__delete');
+  deleteCardButton.addEventListener ('click', deleteCard);
+
+  // Функция удаления карточки
+  function deleteCard(evt){evt.target.closest('.cards__element').remove();};
 }
 
 initialCards.forEach(createCard)
+
 // Делаем функцию которая по сабмиту берет данные из полей, заворачивает в обьект ниже
 // и вызывает функцию createCard, которая передаёт обьект создавая карточку.
-
 function cardFormSubmit(evt) {
   evt.preventDefault();
   createCard({
@@ -99,11 +113,3 @@ function cardFormSubmit(evt) {
 
 cardAddForm.addEventListener('submit', cardFormSubmit);
 
-//cardAddForm.addEventListener('submit', cardFormSubmit);
-
-// const newCard = {
-//   link: 'https://picsum.photos/200',
-//   name: 'test'
-// }
-
-// createCard(newCard);
