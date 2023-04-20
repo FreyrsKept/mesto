@@ -91,12 +91,12 @@ function createCard(card) {
 
   // Переменная для удаления карточки
   const deleteCardButton = document.querySelector('.cards__delete');
-  deleteCardButton.addEventListener ('click', deleteCard);
+  deleteCardButton.addEventListener('click', deleteCard);
 
-  // Функция удаления карточки
-  function deleteCard(evt){evt.target.closest('.cards__element').remove();};
+  // переменная для лайка карточки
+  const likeCardButton = document.querySelector('.cards__like-button');
+  likeCardButton.addEventListener('click', likeCard);
 }
-
 initialCards.forEach(createCard)
 
 // Делаем функцию которая по сабмиту берет данные из полей, заворачивает в обьект ниже
@@ -110,6 +110,10 @@ function cardFormSubmit(evt) {
   }, cards);
   popupClose(imagePopup);
 }
-
 cardAddForm.addEventListener('submit', cardFormSubmit);
 
+// Функция удаления карточки
+function deleteCard(evt) { evt.target.closest('.cards__template').remove(); };
+
+//функция лайка карточки
+function likeCard(evt) { evt.target.closest('.cards__like-button').classList.toggle('cards__like-button_active'); };
