@@ -7,8 +7,11 @@
   position: fixed;
   right: 0;
   top: 0;
-  display: none;
   box-sizing: border-box;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s linear, opacity 0.2s linear;
 }
 
 @media screen and (max-width: 510px) {
