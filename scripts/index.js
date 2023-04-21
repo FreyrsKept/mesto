@@ -134,11 +134,6 @@ editProfileButton.addEventListener('click', function () {
   jobInput.value = description.textContent;
 });
 
-// Открытие попапа добавления фото
-addImageButton.addEventListener('click', function () {
-  imagePopup.classList.add('popup_opened');
-});
-
 // Сабмит изменений в профиле 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -149,3 +144,8 @@ function handleFormSubmit(evt) {
   popupClose(ProfilePopup);
 }
 formElement.addEventListener('submit', handleFormSubmit);
+
+// Открытие попапа добавления фото
+addImageButton.addEventListener('click', function () {
+  imagePopup.classList.add('popup_opened');
+});
