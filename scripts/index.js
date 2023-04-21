@@ -114,7 +114,7 @@ function deleteCard(evt) { evt.target.closest('.cards__template').remove(); };
 function likeCard(evt) { evt.target.closest('.cards__like-button').classList.toggle('cards__like-button_active'); };
 
 // Функция открытия карточки
-function viewCard(evt){
+function viewCard(evt) {
   imageView.src = evt.target.src;
   caption.textContent = evt.target.alt;
 }
