@@ -8,6 +8,7 @@
   right: 0;
   top: 0;
   display: none;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 510px) {
