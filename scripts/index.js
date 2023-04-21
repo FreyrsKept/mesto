@@ -13,10 +13,19 @@ const popup = document.querySelector('.popup');
 const ProfilePopup = document.querySelector('.popup_type_profile');
 const imagePopup = document.querySelector('.popup_type_add-card');
 
+const viewPopup = document.querySelector('.popup_type_image-view');
+const caption = document.querySelector('.popup__caption');
+const imageView = document.querySelector('.popup__image');
+
 // функция закрытия попапа
 function popupClose(popup) {
   popup.classList.remove('popup_opened');
 };
+
+// функция открытия попапа
+function popupOpen(popup) {
+  popup.classList.add('popup_opened');
+}
 
 // Закрытие попапа кнопкой
 popupCloseButtonList.forEach(function (closeButton) {
@@ -104,12 +113,13 @@ function createCard(card) {
   const likeCardButton = document.querySelector('.cards__like-button');
   likeCardButton.addEventListener('click', likeCard);
 
-  // переменная для зума картинки
-  
+  // переменная для зума карточки
+  cardImage.addEventListener('click', viewCard);
+  cardImage.addEventListener('click', () => popupOpen(viewPopup))
 }
 initialCards.forEach(createCard)
 
-// Делаем функцию которая по сабмиту берет данные из полей, заворачивает в обьект ниже
+// функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже
 // и вызывает функцию createCard, которая передаёт обьект создавая карточку.
 function cardFormSubmit(evt) {
   evt.preventDefault();
@@ -125,5 +135,11 @@ cardAddForm.addEventListener('submit', cardFormSubmit);
 // Функция удаления карточки
 function deleteCard(evt) { evt.target.closest('.cards__template').remove(); };
 
-//функция лайка карточки
+// функция лайка карточки
 function likeCard(evt) { evt.target.closest('.cards__like-button').classList.toggle('cards__like-button_active'); };
+
+// Функция открытия карточки
+function viewCard(evt){
+  imageView.src = evt.target.src;
+  caption.textContent = evt.target.alt;
+}
