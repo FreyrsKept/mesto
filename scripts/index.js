@@ -1,63 +1,28 @@
-const editProfileButton = document.querySelector('.profile__name-edit');
-const addImageButton = document.querySelector('.profile__add');
+const popup = document.querySelector('.popup');
+
+// переменные для новой карточки
 const formElement = document.querySelector('.popup__form');
-const nameInput = document.querySelector('#username-input');
-const jobInput = document.querySelector('#description-input');
 const cardAddForm = document.querySelector('#popup__form-add')
 const ImageName = document.querySelector('#imageName-input');
 const ImageLink = document.querySelector('#imageLink-input');
+
+// кнопки
 const popupCloseButtonList = document.querySelectorAll('.popup__close');
+const editProfileButton = document.querySelector('.profile__name-edit');
+const addImageButton = document.querySelector('.profile__add');
+
+// переменные для изменения профиля
+const ProfilePopup = document.querySelector('.popup_type_profile');
 const userName = document.querySelector('.profile__name');
 const description = document.querySelector('.profile__description');
-const popup = document.querySelector('.popup');
-const ProfilePopup = document.querySelector('.popup_type_profile');
-const imagePopup = document.querySelector('.popup_type_add-card');
+const nameInput = document.querySelector('#username-input');
+const jobInput = document.querySelector('#description-input');
 
+// переменные для попапа с просмотром
+const imagePopup = document.querySelector('.popup_type_add-card');
 const viewPopup = document.querySelector('.popup_type_image-view');
 const caption = document.querySelector('.popup__caption');
 const imageView = document.querySelector('.popup__image');
-
-// функция закрытия попапа
-function popupClose(popup) {
-  popup.classList.remove('popup_opened');
-};
-
-// функция открытия попапа
-function popupOpen(popup) {
-  popup.classList.add('popup_opened');
-}
-
-// Закрытие попапа кнопкой
-popupCloseButtonList.forEach(function (closeButton) {
-  const popup = closeButton.closest(".popup")
-  closeButton.addEventListener('click', function () {
-    popupClose(popup);
-  })
-});
-
-// Открытия попапа профиля с автозаполнением полей
-editProfileButton.addEventListener('click', function () {
-  ProfilePopup.classList.add('popup_opened')
-  nameInput.value = userName.textContent;
-  jobInput.value = description.textContent;
-});
-
-// Открытие попапа добавления фото
-addImageButton.addEventListener('click', function () {
-  imagePopup.classList.add('popup_opened');
-});
-
-// Сабмит изменений в профиле 
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-
-  userName.textContent = nameInput.value;
-  description.textContent = jobInput.value;
-
-  popupClose(ProfilePopup);
-}
-
-formElement.addEventListener('submit', handleFormSubmit);
 
 // Стартовый массив карточек
 const initialCards = [
@@ -119,6 +84,16 @@ function createCard(card) {
 }
 initialCards.forEach(createCard)
 
+// функция закрытия попапа
+function popupClose(popup) {
+  popup.classList.remove('popup_opened');
+};
+
+// функция открытия попапа
+function popupOpen(popup) {
+  popup.classList.add('popup_opened');
+}
+
 // функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже
 // и вызывает функцию createCard, которая передаёт обьект создавая карточку.
 function cardFormSubmit(evt) {
@@ -143,3 +118,34 @@ function viewCard(evt){
   imageView.src = evt.target.src;
   caption.textContent = evt.target.alt;
 }
+
+// Закрытие попапа кнопкой
+popupCloseButtonList.forEach(function (closeButton) {
+  const popup = closeButton.closest(".popup")
+  closeButton.addEventListener('click', function () {
+    popupClose(popup);
+  })
+});
+
+// Открытия попапа профиля с автозаполнением полей
+editProfileButton.addEventListener('click', function () {
+  ProfilePopup.classList.add('popup_opened')
+  nameInput.value = userName.textContent;
+  jobInput.value = description.textContent;
+});
+
+// Открытие попапа добавления фото
+addImageButton.addEventListener('click', function () {
+  imagePopup.classList.add('popup_opened');
+});
+
+// Сабмит изменений в профиле 
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+
+  userName.textContent = nameInput.value;
+  description.textContent = jobInput.value;
+
+  popupClose(ProfilePopup);
+}
+formElement.addEventListener('submit', handleFormSubmit);
