@@ -1,10 +1,8 @@
-const popup = document.querySelector('.popup');
-
 // переменные для новой карточки
 const formElement = document.querySelector('.popup__form');
 const cardAddForm = document.querySelector('#popup__form-add')
-const ImageName = document.querySelector('#imageName-input');
-const ImageLink = document.querySelector('#imageLink-input');
+const imageName = document.querySelector('#imageName-input');
+const imageLink = document.querySelector('#imageLink-input');
 
 // кнопки
 const popupCloseButtonList = document.querySelectorAll('.popup__close');
@@ -62,13 +60,12 @@ const cards = document.querySelector('.cards')
 
 // Выводим массив карточек
 function createCard(card) {
-  const newCard = document.querySelector('#cardTemplate').content.cloneNode(true)
+  const newCard = document.querySelector('#cardTemplate').content.querySelector('.cards__element').cloneNode(true)
   const cardHeading = newCard.querySelector('.cards__title')
   cardHeading.textContent = card.name
   const cardImage = newCard.querySelector('.cards__image')
   cardImage.setAttribute('src', card.link)
   cardImage.setAttribute('alt', card.alt)
-  cards.prepend(newCard)
 
   // Переменная для удаления карточки
   const deleteCardButton = document.querySelector('.cards__delete');
@@ -81,7 +78,16 @@ function createCard(card) {
   // переменная для зума карточки
   cardImage.addEventListener('click', viewCard);
   cardImage.addEventListener('click', () => popupOpen(viewPopup))
+
+  return newCard
 }
+
+const renderCard = (card, cards) => {
+  const newCardElement = createCard(card);
+  cards.prepend(newCardElement);
+}
+
+
 initialCards.forEach(createCard)
 
 // функция закрытия попапа
@@ -99,16 +105,16 @@ function popupOpen(popup) {
 function cardFormSubmit(evt) {
   evt.preventDefault();
   createCard({
-    name: ImageName.value,
-    alt: ImageName.value,
-    link: ImageLink.value
+    name: imageName.value,
+    alt: imageName.value,
+    link: imageLink.value
   }, cards);
   popupClose(imagePopup);
 }
 cardAddForm.addEventListener('submit', cardFormSubmit);
 
 // Функция удаления карточки
-function deleteCard(evt) { evt.target.closest('.cards__template').remove(); };
+function deleteCard(evt) { evt.target.closest('.cards__element').remove(); };
 
 // функция лайка карточки
 function likeCard(evt) { evt.target.closest('.cards__like-button').classList.toggle('cards__like-button_active'); };
