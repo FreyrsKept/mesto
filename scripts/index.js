@@ -1,5 +1,3 @@
-const popup = document.querySelector('.popup');
-
 // переменные для новой карточки
 const imagePopup = document.querySelector('.popup_type_add-card');
 const cardAddForm = document.querySelector('#popup__form-add');
