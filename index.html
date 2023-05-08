@@ -43,10 +43,10 @@
     </footer>
     <div class="popup popup_type_profile">
         <div class="popup__container">
-            <form name="popup__form-profile" class="popup__form" id="popup__form-profile">
+            <form name="popup__form-profile" class="popup__form" id="popup__form-profile" novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input">
-                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input">
+                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
                 <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button type="button" id="popup__close-button_profile" class="popup__close" aria-label="Закрыть"></button>
@@ -54,12 +54,12 @@
     </div>
     <div class="popup popup_type_add-card">
         <div class="popup__container">
-            <form name="popup__form-add" class="popup__form" id="popup__form-add">
+            <form name="popup__form-add" class="popup__form" id="popup__form-add" novalidate>
                 <h3 class="popup__title">Новое место</h3>
                 <input id="imageName-input" type="text" placeholder="Название изображения"
-                    class="popup__input popup__input_image-name">
+                    class="popup__input popup__input_image-name" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
                 <input id="imageLink-input" type="url" placeholder="Ссылка на изображение"
-                    class="popup__input popup__input_image-link">
+                    class="popup__input popup__input_image-link" required>
                 <button type="submit" class="popup__submit">Создать</button>
             </form>
             <button type="button" id="popup__close-button_add_card" class="popup__close" aria-label="Закрыть"></button>
