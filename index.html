@@ -45,8 +45,10 @@
         <div class="popup__container">
             <form name="popup__form-profile" class="popup__form" id="popup__form-profile" novalidate>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
-                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                <input id="username-input" type="text" placeholder="Ваше имя" class="popup__input" minlength="2" maxlength="40" required>
+                <span class="username-input-error popup__input-error"></span>
+                <input id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" minlength="2" maxlength="200" required>
+                <span class="description-input-error popup__input-error"></span>
                 <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button type="button" id="popup__close-button_profile" class="popup__close" aria-label="Закрыть"></button>
@@ -57,9 +59,11 @@
             <form name="popup__form-add" class="popup__form" id="popup__form-add" novalidate>
                 <h3 class="popup__title">Новое место</h3>
                 <input id="imageName-input" type="text" placeholder="Название изображения"
-                    class="popup__input popup__input_image-name" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+                    class="popup__input popup__input_image-name" minlength="2" maxlength="30" required>
+                    <span class="place-name-input-error popup__input-error"></span>
                 <input id="imageLink-input" type="url" placeholder="Ссылка на изображение"
                     class="popup__input popup__input_image-link" required>
+                    <span class="place-image-input-error popup__input-error"></span>
                 <button type="submit" class="popup__submit">Создать</button>
             </form>
             <button type="button" id="popup__close-button_add_card" class="popup__close" aria-label="Закрыть"></button>
@@ -75,6 +79,7 @@
         </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
