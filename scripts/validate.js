@@ -1,9 +1,7 @@
-const classListForm = {
-  // Выбираем форму, инпуты и кнопку сабмита
+const classListToValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
-  // Классы для скрытия кнопки, оформления текста ошибкок и скрытия ошибок (через visibility)
   inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input_type_visible',
@@ -54,7 +52,7 @@ const hasInvalidInput = function (inputList) {
   });
 }
 // Общая функция запуска проверки валидации
-const enableValidationCheck = function (settings) {
+const enableValidation = function (settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formItem) => {
     setEventListeners(formItem, settings);
@@ -75,4 +73,13 @@ const toggleButtonState = function (formItem, buttonItem, settings) {
   }
 }
 // Запускаем валидацию
-enableValidationCheck(classListForm);
+enableValidation(classListToValidation);
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input_type_visible',
+}); 
