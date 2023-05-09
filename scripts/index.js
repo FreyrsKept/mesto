@@ -1,8 +1,8 @@
 // переменные для новой карточки
 const imagePopup = document.querySelector('.popup_type_add-card');
 const cardAddForm = document.querySelector('#popup__form-add');
-const imageName = document.querySelector('#imageName-input');
-const imageLink = document.querySelector('#imageLink-input');
+const imageName = document.querySelector('#place-name-input');
+const imageLink = document.querySelector('#place-image-input');
 const addImageButton = document.querySelector('.profile__add');
 const closeCardAddButton = document.querySelector('#popup__close-button_add_card');
 
