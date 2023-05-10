@@ -12,9 +12,7 @@ const classListToValidation = {
 const showValidationError = function (formItem, inputItem, errorMessage, settings) {
   const errorItem = formItem.querySelector(`.${inputItem.id}-error`)
   inputItem.classList.add(settings.inputErrorClass);
-  // Передаём текст ошибки
   errorItem.textContent = errorMessage;
-  // Показываем текст ошибок (через visibility)
   errorItem.classList.add(settings.errorClass);
 };
 
@@ -22,9 +20,7 @@ const showValidationError = function (formItem, inputItem, errorMessage, setting
 const hideValidationError = function (formItem, inputItem, settings) {
   const errorItem = formItem.querySelector(`.${inputItem.id}-error`)
   inputItem.classList.remove(settings.inputErrorClass);
-  // Скрываем текст ошибок (через visibility)
   errorItem.classList.remove(settings.errorClass);
-  // Очищаем ошибки
   errorItem.textContent = '';
 };
 
@@ -67,14 +63,11 @@ const enableValidation = function (settings) {
 
 // Функция активации submit кнопки после валидации
 const toggleButtonState = function (formItem, buttonItem, settings) {
-  // Объявляем массив для корректной работы some
   const inputList = Array.from(formItem.querySelectorAll(settings.inputSelector));
   if (hasInvalidInput(inputList)) {
-    // Отключаем кнопку при ошибке валидации
     buttonItem.classList.add(settings.inactiveButtonClass);
     buttonItem.setAttribute('disabled', true);
   } else {
-    // Включаем кнопку при ошибке валидации
     buttonItem.classList.remove(settings.inactiveButtonClass);
     buttonItem.removeAttribute('disabled');
   }
