@@ -8,61 +8,53 @@ const classListToValidation = {
   errorClass: 'popup__input_type_visible',
 };
 
-// Функция показа ошибок валидации
-const showValidationError = function (formItem, inputItem, errorMessage, settings) {
+// функция для показа ошибок валидации
+const showValidError = function (formItem, inputItem, errorMessage, settings) {
   const errorItem = formItem.querySelector(`.${inputItem.id}-error`)
   inputItem.classList.add(settings.inputErrorClass);
   errorItem.textContent = errorMessage;
   errorItem.classList.add(settings.errorClass);
 };
 
-// Функция скрытия ошибок валидации
-const hideValidationError = function (formItem, inputItem, settings) {
+// функция для скрытия ошибок валидации
+const hideValidError = function (formItem, inputItem, settings) {
   const errorItem = formItem.querySelector(`.${inputItem.id}-error`)
   inputItem.classList.remove(settings.inputErrorClass);
   errorItem.classList.remove(settings.errorClass);
   errorItem.textContent = '';
 };
 
-// Функция проверки валидации форм
+// функция для проверки валидации форм
 const checkInputValidity = function (formItem, inputItem, settings) {
   if (inputItem.validity.valid === false) {
-    showValidationError(formItem, inputItem, inputItem.validationMessage, settings);
+    showValidError(formItem, inputItem, inputItem.validationMessage, settings);
   } else {
-    hideValidationError(formItem, inputItem, settings);
+    hideValidError(formItem, inputItem, settings);
   }
 };
 
-// Функция проверки всех input
+// функция для проверки всех input
 const setEventListeners = function (formItem, settings) {
   const inputList = Array.from(formItem.querySelectorAll(settings.inputSelector));
   const buttonItem = formItem.querySelector(settings.submitButtonSelector);
-  toggleButtonState(formItem, buttonItem, settings);
+  toggleButtonStatus(formItem, buttonItem, settings);
   inputList.forEach((inputItem) => {
     inputItem.addEventListener('input', function () {
       checkInputValidity(formItem, inputItem, settings);
-      toggleButtonState(formItem, buttonItem, settings);
+      toggleButtonStatus(formItem, buttonItem, settings);
     });
   });
 };
 
-// Функция обхода input на ошибки
+// функция для проверки всех input на ошибки
 const hasInvalidInput = function (inputList) {
   return inputList.some((item) => {
     return !item.validity.valid;
   });
 };
 
-// Общая функция запуска проверки валидации
-const enableValidation = function (settings) {
-  const formList = Array.from(document.querySelectorAll(settings.formSelector));
-  formList.forEach((formItem) => {
-    setEventListeners(formItem, settings);
-  });
-};
-
-// Функция активации submit кнопки после валидации
-const toggleButtonState = function (formItem, buttonItem, settings) {
+// функция для активации всех кнопок submit после валидации
+const toggleButtonStatus = function (formItem, buttonItem, settings) {
   const inputList = Array.from(formItem.querySelectorAll(settings.inputSelector));
   if (hasInvalidInput(inputList)) {
     buttonItem.classList.add(settings.inactiveButtonClass);
@@ -71,6 +63,14 @@ const toggleButtonState = function (formItem, buttonItem, settings) {
     buttonItem.classList.remove(settings.inactiveButtonClass);
     buttonItem.removeAttribute('disabled');
   }
+};
+
+// функция для запуска проверки валидации
+const enableValidation = function (settings) {
+  const formArrayEl = Array.from(document.querySelectorAll(settings.formSelector));
+  formArrayEl.forEach((formItem) => {
+    setEventListeners(formItem, settings);
+  });
 };
 
 // Запуск валидации
