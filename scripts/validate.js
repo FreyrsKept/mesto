@@ -1,3 +1,4 @@
+// Список классов для валидации
 const classListToValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -16,6 +17,7 @@ const showValidationError = function (formItem, inputItem, errorMessage, setting
   // Показываем текст ошибок (через visibility)
   errorItem.classList.add(settings.errorClass);
 };
+
 // Функция скрытия ошибок валидации
 const hideValidationError = function (formItem, inputItem, settings) {
   const errorItem = formItem.querySelector(`.${inputItem.id}-error`)
@@ -25,6 +27,7 @@ const hideValidationError = function (formItem, inputItem, settings) {
   // Очищаем ошибки
   errorItem.textContent = '';
 };
+
 // Функция проверки валидации форм
 const checkInputValidity = function (formItem, inputItem, settings) {
   if (inputItem.validity.valid === false) {
@@ -33,6 +36,7 @@ const checkInputValidity = function (formItem, inputItem, settings) {
     hideValidationError(formItem, inputItem, settings);
   }
 };
+
 // Функция проверки всех input
 const setEventListeners = function (formItem, settings) {
   const inputList = Array.from(formItem.querySelectorAll(settings.inputSelector));
@@ -44,20 +48,23 @@ const setEventListeners = function (formItem, settings) {
       toggleButtonState(formItem, buttonItem, settings);
     });
   });
-}
+};
+
 // Функция обхода input на ошибки
 const hasInvalidInput = function (inputList) {
   return inputList.some((item) => {
     return !item.validity.valid;
   });
-}
+};
+
 // Общая функция запуска проверки валидации
 const enableValidation = function (settings) {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
   formList.forEach((formItem) => {
     setEventListeners(formItem, settings);
   });
-}
+};
+
 // Функция активации submit кнопки после валидации
 const toggleButtonState = function (formItem, buttonItem, settings) {
   // Объявляем массив для корректной работы some
@@ -71,10 +78,9 @@ const toggleButtonState = function (formItem, buttonItem, settings) {
     buttonItem.classList.remove(settings.inactiveButtonClass);
     buttonItem.removeAttribute('disabled');
   }
-}
-// Запускаем валидацию
-enableValidation(classListToValidation);
+};
 
+// Запуск валидации
 enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
