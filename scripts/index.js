@@ -25,6 +25,9 @@ const caption = document.querySelector('.popup__caption');
 const imageView = document.querySelector('.popup__image');
 const closeCardViewButton = document.querySelector('#popup__close-button_view_card');
 
+// переменная всех попапов
+const popups = document.querySelectorAll('.popup');
+
 
 // Стартовый массив карточек
 const initialCards = [
@@ -131,6 +134,15 @@ closeCardViewButton.addEventListener('click', function () {
 // закрытие попапа измениния профиля
 closeProfileEditButton.addEventListener('click', function () {
   closePopup(profilePopup);
+});
+
+// закрытие попапа кликом на оверлей
+popups.forEach( popupElement => {
+  popupElement.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
+      closePopup(popupElement);
+    }
+  });
 });
 
 
