@@ -107,6 +107,15 @@ cardAddForm.addEventListener('submit', cardFormSubmit);
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+};
+
+// Закрытие попапа через 'Esc'
+const closePopupEsc = function (evt) {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector('.popup_opened')
+    closePopup(popupOpened);
+  }
 };
 
 // закрытие попапа с добавлением карточки
@@ -127,7 +136,8 @@ closeProfileEditButton.addEventListener('click', function () {
 
 // функция открытия попапа
 function openPopup(popup) {
-  popup.classList.add('popup_opened');
+  popup.classList.add('popup_opened')
+  document.addEventListener('keydown', closePopupEsc);
 };
 
 // Функция удаления карточки
@@ -165,3 +175,10 @@ profileChangeForm.addEventListener('submit', handleProfileFormSubmit);
 addImageButton.addEventListener('click', function () {
   openPopup(imagePopup);
 });
+
+// const closePopupEsc = function (evt) {
+//   if (evt.key === "Escape") {
+//     const popupOpened = document.querySelector('.popup_opened')
+//     closePopup(popupOpened);
+//   }
+// }
