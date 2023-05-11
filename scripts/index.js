@@ -154,6 +154,7 @@ function likeCard(evt) { evt.target.closest('.cards__like-button').classList.tog
 function viewCard(evt) {
   openPopup(viewPopup)
   imageView.src = evt.target.src;
+  imageView.alt = evt.target.alt;
   caption.textContent = evt.target.alt;
 };
 
@@ -179,10 +180,3 @@ profileChangeForm.addEventListener('submit', handleProfileFormSubmit);
 addImageButton.addEventListener('click', function () {
   openPopup(imagePopup);
 });
-
-// const closePopupEsc = function (evt) {
-//   if (evt.key === "Escape") {
-//     const popupOpened = document.querySelector('.popup_opened')
-//     closePopup(popupOpened);
-//   }
-// }
