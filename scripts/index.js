@@ -95,22 +95,30 @@ initialCards.reverse().forEach(data => { renderCard(data, cards); });
 
 // функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже
 // и вызывает функцию createCard, которая передаёт обьект создавая карточку.
-function cardFormSubmit(evt) {
+function handleCardFormSubmit(evt) {
   evt.preventDefault();
   renderCard({
     name: imageName.value,
     alt: imageName.value,
     link: imageLink.value
   }, cards);
-  document.getElementById('popup__form-add').reset();
+  setDisabledOnSubmitButton(evt);
+  cardAddForm.reset();
   closePopup(imagePopup);
 };
-cardAddForm.addEventListener('submit', cardFormSubmit);
+cardAddForm.addEventListener('submit', handleCardFormSubmit);
+
+// функция отключения кнопки сабмита
+const setDisabledOnSubmitButton = (evt) => {
+  const submitButtonElement = evt.target.querySelector('.popup__submit');
+  submitButtonElement.classList.add('popup__submit_disabled');
+  submitButtonElement.setAttribute('disabled', true);
+};
 
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.addEventListener('keydown', closePopupEsc);
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 // Закрытие попапа через 'Esc'
@@ -121,21 +129,6 @@ const closePopupEsc = function (evt) {
   }
 };
 
-// закрытие попапа с добавлением карточки
-closeCardAddButton.addEventListener('click', function () {
-  closePopup(imagePopup);
-});
-
-// закрытие попапа с просмотром карточки
-closeCardViewButton.addEventListener('click', function () {
-  closePopup(viewPopup);
-});
-
-// закрытие попапа измениния профиля
-closeProfileEditButton.addEventListener('click', function () {
-  closePopup(profilePopup);
-});
-
 // закрытие попапа кликом на оверлей
 popups.forEach( popupElement => {
   popupElement.addEventListener('mousedown', (evt) => {
@@ -144,7 +137,6 @@ popups.forEach( popupElement => {
     }
   });
 });
-
 
 // функция открытия попапа
 function openPopup(popup) {
