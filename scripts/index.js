@@ -1,4 +1,4 @@
-import FormValidator from "./validate.js";
+//import Validator from "./validate.js";
 import Card from "./card.js";
 
 // переменные для новой карточки
@@ -66,28 +66,28 @@ const initialCards = [
   }
 ];
 
-// Выводим массив карточек
-const createCard = (card) => {
-  const newCard = document.querySelector('#cardTemplate').content.querySelector('.cards__element').cloneNode(true);
-  const cardHeading = newCard.querySelector('.cards__title');
-  cardHeading.textContent = card.name;
-  const cardImage = newCard.querySelector('.cards__image');
-  cardImage.setAttribute('src', card.link);
-  cardImage.setAttribute('alt', card.alt);
+// //-- Выводим массив карточек
+// const createCard = (card) => {
+//   const newCard = document.querySelector('#cardTemplate').content.querySelector('.cards__element').cloneNode(true);
+//   const cardHeading = newCard.querySelector('.cards__title');
+//   cardHeading.textContent = card.name;
+//   const cardImage = newCard.querySelector('.cards__image');
+//   cardImage.setAttribute('src', card.link);
+//   cardImage.setAttribute('alt', card.alt);
 
-  // Переменная для удаления карточки
-  const deleteCardButton = newCard.querySelector('.cards__delete');
-  deleteCardButton.addEventListener('click', deleteCard);
+//   // Переменная для удаления карточки
+//   const deleteCardButton = newCard.querySelector('.cards__delete');
+//   deleteCardButton.addEventListener('click', deleteCard);
 
-  // переменная для лайка карточки
-  const likeCardButton = newCard.querySelector('.cards__like-button');
-  likeCardButton.addEventListener('click', likeCard);
+//   // переменная для лайка карточки
+//   const likeCardButton = newCard.querySelector('.cards__like-button');
+//   likeCardButton.addEventListener('click', likeCard);
 
-  // слушатель для зума карточки
-  cardImage.addEventListener('click', viewCard);
+//   // слушатель для зума карточки
+//   cardImage.addEventListener('click', viewCard);
 
-  return newCard;
-};
+//   return newCard;
+// };
 
 const renderCard = (card, cards) => {
   const newCardElement = createCard(card);
@@ -147,13 +147,13 @@ function openPopup(popup) {
   document.addEventListener('keydown', closePopupEsc);
 };
 
-// Функция удаления карточки
+//-- Функция удаления карточки
 function deleteCard(evt) { evt.target.closest('.cards__element').remove(); };
 
-// функция лайка карточки
+//-- функция лайка карточки
 function likeCard(evt) { evt.target.closest('.cards__like-button').classList.toggle('cards__like-button_active'); };
 
-// Функция открытия карточки
+//-- Функция открытия карточки
 function viewCard(evt) {
   openPopup(viewPopup)
   imageView.src = evt.target.src;
@@ -184,4 +184,4 @@ addImageButton.addEventListener('click', function () {
   openPopup(imagePopup);
 });
 
-export { openPopup};
+export {openPopup};
