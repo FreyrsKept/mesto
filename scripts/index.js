@@ -1,5 +1,16 @@
-//import Validator from "./validate.js";
+import { initialCards } from "./cards.js";
 import Card from "./card.js";
+import FormValidator from "./FormValidator.js";
+
+ // Список классов для валидации
+const settings = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input_type_visible',
+};
 
 // переменные для новой карточки
 const imagePopup = document.querySelector('.popup_type_add-card');
@@ -31,70 +42,29 @@ const closeCardViewButton = document.querySelector('#popup__close-button_view_ca
 // переменная всех попапов
 const popups = document.querySelectorAll('.popup');
 
-
-// Стартовый массив карточек
-const initialCards = [
-  {
-    name: 'Виноградовский мост',
-    alt: 'Виноградовский мост в Красноясрке ведущий на остров-парк Татышев',
-    link: 'https://top10.travel/wp-content/uploads/2017/09/vinogradovskij-most.jpg'
-  },
-  {
-    name: 'Царь рыба',
-    alt: 'Царь рыба в Дивногорске',
-    link: 'https://top10.travel/wp-content/uploads/2017/09/tsar-ryba.jpg'
-  },
-  {
-    name: 'Красноярские столбы',
-    alt: 'Красноярские столбы - заповедник близ города Красноярск',
-    link: 'https://top10.travel/wp-content/uploads/2017/09/zapovednik-stolby.jpg'
-  },
-  {
-    name: 'Вид на океан',
-    alt: 'Вид на океан',
-    link: 'https://fikiwiki.com/uploads/posts/2022-02/1645033331_1-fikiwiki-com-p-krasivie-kartinki-na-smartfon-1.jpg'
-  },
-  {
-    name: 'Горы алтая',
-    alt: 'Вид на горы алтая',
-    link: 'https://www.russiadiscovery.ru/upload/files/files/Altaiskie_gory.jpg'
-  },
-  {
-    name: 'FUJIFILM C200 photo',
-    alt: 'Фото сделанное на FUJIFILM C200',
-    link: 'https://assets.community.lomography.com/ca/d5e3b43a75575e8ec79b18eb5747ed1a96f30c/1216x789x1.jpg?auth=89bb7a413857bb6927c5e5289102859143289dd1'
-  }
-];
-
 // //-- Выводим массив карточек
-// const createCard = (card) => {
-//   const newCard = document.querySelector('#cardTemplate').content.querySelector('.cards__element').cloneNode(true);
-//   const cardHeading = newCard.querySelector('.cards__title');
-//   cardHeading.textContent = card.name;
-//   const cardImage = newCard.querySelector('.cards__image');
-//   cardImage.setAttribute('src', card.link);
-//   cardImage.setAttribute('alt', card.alt);
+function createCard(card) {
+  return new Card(card, "template").create();
+}
 
-//   // Переменная для удаления карточки
-//   const deleteCardButton = newCard.querySelector('.cards__delete');
-//   deleteCardButton.addEventListener('click', deleteCard);
+// Валидация профиля
+const popupFormProfileValidation = new FormValidator(
+  settings,
+  profileChangeForm
+);
+popupFormProfileValidation.enableValidation();
+// Валидация добавления карточки
+const popupFormAddCardValidation = new FormValidator(
+  settings,
+  cardAddForm
+);
+popupFormAddCardValidation.enableValidation();
 
-//   // переменная для лайка карточки
-//   const likeCardButton = newCard.querySelector('.cards__like-button');
-//   likeCardButton.addEventListener('click', likeCard);
-
-//   // слушатель для зума карточки
-//   cardImage.addEventListener('click', viewCard);
-
-//   return newCard;
-// };
-
-const renderCard = (card, cards) => {
-  const newCardElement = createCard(card);
-  cards.prepend(newCardElement);
+const renderCard = (card) => {
+  cards.prepend(createCard(card));
 };
 
-initialCards.reverse().forEach(data => { renderCard(data, cards); });
+initialCards.forEach((data) => renderCard(data));
 
 // функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже
 // и вызывает функцию createCard, которая передаёт обьект создавая карточку.
@@ -171,10 +141,8 @@ editProfileButton.addEventListener('click', function () {
 // Сабмит изменений в профиле 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-
   userName.textContent = nameInput.value;
   description.textContent = jobInput.value;
-
   closePopup(profilePopup);
 };
 profileChangeForm.addEventListener('submit', handleProfileFormSubmit);

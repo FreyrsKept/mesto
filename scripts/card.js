@@ -7,7 +7,7 @@ const imageView = document.querySelector('.popup__image');
 export default class Card {
     constructor(card, cardTemplate) {
         this._cardTemplate = cardTemplate;
-        this.name = card.name;
+        this._name = card.name;
         this._link = card.link;
     }
 
@@ -18,13 +18,14 @@ export default class Card {
             .cloneNode(true);
     }
 
-    _setEventListeners() {
-        this.cardItem
+    _setEventListener() {
+        this._cardItem
             .querySelector('.cards__like-button')
             .addEventListener('click', (e) =>
-              e.target.classList.toggle('cards__like-button_active'));
+              e.target.classList.toggle('cards__like-button_active')
+            );
 
-        this.cardItem
+        this._cardItem
             .querySelector('.cards__delete')
             .addEventListener('click', (e) =>
               e.target.closest('.cards__element').remove());
