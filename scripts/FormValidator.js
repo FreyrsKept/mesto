@@ -35,12 +35,14 @@ export default class FormValidator {
 
   _setEventListeners = () => {
     this.toggleButtonStatus();
+
     this._inputList.forEach((element) => {
       element.addEventListener("input", () => {
         this._checkInputValidity(element);
         this.toggleButtonStatus()
       });
     });
+
   };
 
   // // функция для проверки всех input на ошибки

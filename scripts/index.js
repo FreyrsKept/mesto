@@ -17,7 +17,7 @@ const imagePopup = document.querySelector('.popup_type_add-card');
 const cardAddForm = document.querySelector('#popup__form-add');
 const imageName = document.querySelector('#place-name-input');
 const imageLink = document.querySelector('#place-image-input');
-const addImageButton = document.querySelector('.profile__add');
+const buttonOpenPopupCard = document.querySelector('.profile__add');
 const closeCardAddButton = document.querySelector('#popup__close-button_add_card');
 
 // карточки
@@ -75,18 +75,10 @@ function handleCardFormSubmit(evt) {
     alt: imageName.value,
     link: imageLink.value
   }, cards);
-  setDisabledOnSubmitButton(evt);
   cardAddForm.reset();
   closePopup(imagePopup);
 };
 cardAddForm.addEventListener('submit', handleCardFormSubmit);
-
-// функция отключения кнопки сабмита
-const setDisabledOnSubmitButton = (evt) => {
-  const submitButtonElement = evt.target.querySelector('.popup__submit');
-  submitButtonElement.classList.add('popup__submit_disabled');
-  submitButtonElement.setAttribute('disabled', true);
-};
 
 // функция закрытия попапа
 function closePopup(popup) {
@@ -117,20 +109,6 @@ function openPopup(popup) {
   document.addEventListener('keydown', closePopupEsc);
 };
 
-//-- Функция удаления карточки
-function deleteCard(evt) { evt.target.closest('.cards__element').remove(); };
-
-//-- функция лайка карточки
-function likeCard(evt) { evt.target.closest('.cards__like-button').classList.toggle('cards__like-button_active'); };
-
-//-- Функция открытия карточки
-function viewCard(evt) {
-  openPopup(viewPopup)
-  imageView.src = evt.target.src;
-  imageView.alt = evt.target.alt;
-  caption.textContent = evt.target.alt;
-};
-
 // Открытия попапа профиля с автозаполнением полей
 editProfileButton.addEventListener('click', function () {
   openPopup(profilePopup)
@@ -148,8 +126,8 @@ function handleProfileFormSubmit(evt) {
 profileChangeForm.addEventListener('submit', handleProfileFormSubmit);
 
 // Открытие попапа добавления фото
-addImageButton.addEventListener('click', function () {
+buttonOpenPopupCard.addEventListener('click', function () {
   openPopup(imagePopup);
 });
-
+export default viewPopup;
 export {openPopup};

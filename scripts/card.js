@@ -1,6 +1,6 @@
 import { openPopup } from "./index.js";
+import viewPopup from "./index.js"
 
-const viewPopup = document.querySelector('.popup_type_image-view');
 const caption = document.querySelector('.popup__caption');
 const imageView = document.querySelector('.popup__image');
 
@@ -19,16 +19,9 @@ export default class Card {
     }
 
     _setEventListener() {
-        this._cardItem
-            .querySelector('.cards__like-button')
-            .addEventListener('click', (e) =>
-              e.target.classList.toggle('cards__like-button_active')
-            );
-
-        this._cardItem
-            .querySelector('.cards__delete')
-            .addEventListener('click', (e) =>
-              e.target.closest('.cards__element').remove());
+        this._buttonLike.addEventListener('click', () => this._toggleLike())
+        
+        this._buttonDelete.addEventListener('click', () => this._remove());
 
         this._imageItem.addEventListener('click', () => {
             openPopup(viewPopup)
@@ -38,9 +31,20 @@ export default class Card {
         });
     }
 
+    _remove() {
+        this._cardItem.remove();
+        this._cardItem = null;
+    }
+
+    _toggleLike() {
+        this._buttonLike.classList.toggle('cards__like-button_active')
+    }
+
     create() {
         this._cardItem = this._getTemplate();
         this._imageItem = this._cardItem.querySelector('.cards__image');
+        this._buttonLike = this._cardItem.querySelector('.cards__like-button');
+        this._buttonDelete = this._cardItem.querySelector('.cards__delete');
         this._cardItem.querySelector('.cards__title').textContent = this._name;
         this._imageItem.setAttribute('src', this._link);
         this._imageItem.setAttribute('alt', this._name);
