@@ -30,14 +30,11 @@ const userName = document.querySelector('.profile__name');
 const description = document.querySelector('.profile__description');
 const nameInput = document.querySelector('#username-input');
 const jobInput = document.querySelector('#description-input');
-const editProfileButton = document.querySelector('.profile__name-edit');
-const closeProfileEditButton = document.querySelector('#popup__close-button_profile');
+const ProfileButtonEdit = document.querySelector('.profile__name-edit');
 
 // переменные для попапа с просмотром
 const viewPopup = document.querySelector('.popup_type_image-view');
-const caption = document.querySelector('.popup__caption');
-const imageView = document.querySelector('.popup__image');
-const closeCardViewButton = document.querySelector('#popup__close-button_view_card');
+const CardViewButtonClose = document.querySelector('#popup__close-button_view_card');
 
 // переменная всех попапов
 const popups = document.querySelectorAll('.popup');
@@ -53,6 +50,7 @@ const popupFormProfileValidation = new FormValidator(
   profileChangeForm
 );
 popupFormProfileValidation.enableValidation();
+
 // Валидация добавления карточки
 const popupFormAddCardValidation = new FormValidator(
   settings,
@@ -66,8 +64,7 @@ const renderCard = (card) => {
 
 initialCards.forEach((data) => renderCard(data));
 
-// функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже
-// и вызывает функцию createCard, которая передаёт обьект создавая карточку.
+// функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже создавая карточку.
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
   renderCard({
@@ -75,10 +72,14 @@ function handleCardFormSubmit(evt) {
     alt: imageName.value,
     link: imageLink.value
   }, cards);
-  cardAddForm.reset();
   closePopup(imagePopup);
 };
 cardAddForm.addEventListener('submit', handleCardFormSubmit);
+
+buttonOpenPopupCard.addEventListener('click', () => {
+  cardAddForm.reset();
+  popupFormAddCardValidation.toggleButtonStatus();
+})
 
 // функция закрытия попапа
 function closePopup(popup) {
@@ -110,7 +111,7 @@ function openPopup(popup) {
 };
 
 // Открытия попапа профиля с автозаполнением полей
-editProfileButton.addEventListener('click', function () {
+ProfileButtonEdit.addEventListener('click', function () {
   openPopup(profilePopup)
   nameInput.value = userName.textContent;
   jobInput.value = description.textContent;

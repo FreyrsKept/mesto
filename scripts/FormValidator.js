@@ -10,6 +10,14 @@ export default class FormValidator {
     )
   }
 
+  // // функция для запуска проверки валидации
+  enableValidation = () => {
+    this._formItem.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+    this._setEventListeners();
+  };
+
   // // функция для проверки валидации форм
   _checkInputValidity = (element) => {
     !element.validity.valid
@@ -32,18 +40,6 @@ export default class FormValidator {
     errorId.classList.remove(this._settings.errorClass);
     errorId.textContent = "";
   }
-
-  _setEventListeners = () => {
-    this.toggleButtonStatus();
-
-    this._inputList.forEach((element) => {
-      element.addEventListener("input", () => {
-        this._checkInputValidity(element);
-        this.toggleButtonStatus()
-      });
-    });
-
-  };
 
   // // функция для проверки всех input на ошибки
   _hasInvalidInput = () => {
@@ -69,11 +65,13 @@ export default class FormValidator {
     this._buttonItem.removeAttribute("disabled", "");
   };
 
-  // // функция для запуска проверки валидации
-  enableValidation = () => {
-    this._formItem.addEventListener("submit", (e) => {
-      e.preventDefault();
+  _setEventListeners = () => {
+    this.toggleButtonStatus();
+    this._inputList.forEach((element) => {
+      element.addEventListener("input", () => {
+        this._checkInputValidity(element);
+        this.toggleButtonStatus();
+      });
     });
-    this._setEventListeners();
   };
 }
