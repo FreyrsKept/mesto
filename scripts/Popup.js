@@ -1,4 +1,4 @@
-export default class Popoup {
+export default class Popup {
     constructor(popup) {
         this._popupCard = popup;
         this._closeWhenPressEsc = this._closeWhenPressEsc.bind(this);

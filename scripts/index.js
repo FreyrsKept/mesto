@@ -5,6 +5,7 @@ import PopupWithImage from './PopupWithImage.js'
 import PopupWithForm from './PopupWithForm.js'
 import UserInfo from './UserInfo.js'
 import Section from './Section.js'
+import Popup from "./Popup.js";
 
  // Список классов для валидации
 const settings = {
@@ -21,7 +22,7 @@ const imagePopup = document.querySelector('.popup_type_add-card');
 const cardAddForm = document.querySelector('#popup__form-add');
 const imageName = document.querySelector('#place-name-input');
 const imageLink = document.querySelector('#place-image-input');
-const buttonOpenPopupCard = document.querySelector('.profile__add');
+const profileButtonAdd = document.querySelector('.profile__add');
 const closeCardAddButton = document.querySelector('#popup__close-button_add_card');
 
 // карточки
@@ -93,12 +94,25 @@ const popupEditProfileForm = new PopupWithForm(profilePopup, (e) => {
   popupEditProfileForm.close();
 })
 
-const popupAddCardForm = new PopupWithForm(popupAddCard, (e) => {
+const popupAddCardForm = new PopupWithForm(imagePopup, (e) => {
   e.preventDefault();
   section.addItem(popupAddCardForm.getInputs());
   popupAddCardForm.close();
 });
 
+popupEditProfileForm.setEventListeners();
+popupAddCardForm.setEventListeners();
+popupImage.setEventListeners();
+
+profileButtonAdd.addEventListener('click', () => {
+  popupFormProfileValidation.resetValidation();
+  popupAddCardForm.open();
+})
+
+ProfileButtonEdit.addEventListener('click', () => {
+  popupEditProfileForm.setInputValues(userInfo.getUserInfo());
+  popupEditProfileForm.open();
+})
 //////////////////////////////////////
 // const renderCard = (card) => {
 //   cards.prepend(createCard(card));
