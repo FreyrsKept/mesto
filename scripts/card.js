@@ -1,11 +1,12 @@
-import { openPopup } from "./index.js";
-import viewPopup from "./index.js"
+// import { openPopup } from "./index.js";
+// import viewPopup from "./index.js"
 
 const caption = document.querySelector('.popup__caption');
 const imageView = document.querySelector('.popup__image');
 
 export default class Card {
-    constructor(card, cardTemplate) {
+    constructor(card, cardTemplate, handleCardClick) {
+        this._handleCardClick = handleCardClick;
         this._cardTemplate = cardTemplate;
         this._name = card.name;
         this._link = card.link;
@@ -29,6 +30,10 @@ export default class Card {
             imageView.setAttribute('alt', this._name);
             caption.textContent = this._name;
         });
+    }
+
+    _handleImageClick() {
+        this._handleCardClick(this._name, this._link); 
     }
 
     _remove() {
