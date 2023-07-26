@@ -74,4 +74,11 @@ export default class FormValidator {
       });
     });
   };
+
+  resetValidation() {
+    this._disableSubmitButton();
+    this._inputList.forEach((element) => {
+      this._hideValidError(element);
+    });
+  }
 }

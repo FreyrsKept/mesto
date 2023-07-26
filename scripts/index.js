@@ -1,11 +1,10 @@
-import { initialCards } from "./cards.js";
+import { initialCards } from "./initialCards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import PopupWithImage from './PopupWithImage.js'
 import PopupWithForm from './PopupWithForm.js'
 import UserInfo from './UserInfo.js'
 import Section from './Section.js'
-import Popup from "./Popup.js";
 
  // Список классов для валидации
 const settings = {
@@ -18,8 +17,8 @@ const settings = {
 };
 
 // переменные для новой карточки
-const imagePopup = document.querySelector('.popup_type_add-card');
-const cardAddForm = document.querySelector('#popup__form-add');
+const popupAddCard = document.querySelector('.popup_type_add-card');
+const cardAddForm = popupAddCard.querySelector('#popup__form-add');
 const imageName = document.querySelector('#place-name-input');
 const imageLink = document.querySelector('#place-image-input');
 const profileButtonAdd = document.querySelector('.profile__add');
@@ -45,9 +44,9 @@ const CardViewButtonClose = document.querySelector('#popup__close-button_view_ca
 const popups = document.querySelectorAll('.popup');
 
 // //-- Выводим массив карточек
-function createCard(card) {
-  return new Card(card, "template").create();
-}
+// function createCard(card) {
+//   return new Card(card, "template").create();
+// }
 
 // Валидация профиля
 const popupFormProfileValidation = new FormValidator(
@@ -68,13 +67,13 @@ const section = new Section(
    items: initialCards,
    renderer: (data) => {
     const card = new Card(data, "template", handleCardClick);
-    return card.generate();
+    return card.create();
    },
   },
 '.cards__template'
-)
+);
 
-//section.renderCards();
+section.renderCards();
 
 function handleCardClick(name, link) {
   popupImage.open(name, link);
@@ -94,7 +93,7 @@ const popupEditProfileForm = new PopupWithForm(profilePopup, (e) => {
   popupEditProfileForm.close();
 })
 
-const popupAddCardForm = new PopupWithForm(imagePopup, (e) => {
+const popupAddCardForm = new PopupWithForm(popupAddCard, (e) => {
   e.preventDefault();
   section.addItem(popupAddCardForm.getInputs());
   popupAddCardForm.close();
@@ -118,7 +117,7 @@ ProfileButtonEdit.addEventListener('click', () => {
 //   cards.prepend(createCard(card));
 // };
 
-// initialCards.forEach((data) => renderCard(data));
+// initialCards.forEach((card) => renderCard(card));
 
 // // функция которая по сабмиту берет данные из полей, заворачивает в обьект ниже создавая карточку.
 // function handleCardFormSubmit(evt) {
@@ -128,7 +127,7 @@ ProfileButtonEdit.addEventListener('click', () => {
 //     alt: imageName.value,
 //     link: imageLink.value
 //   }, cards);
-//   closePopup(imagePopup);
+//   closePopup(popupAddCard);
 // };
 // cardAddForm.addEventListener('submit', handleCardFormSubmit);
 
@@ -184,7 +183,7 @@ ProfileButtonEdit.addEventListener('click', () => {
 
 // // Открытие попапа добавления фото
 // buttonOpenPopupCard.addEventListener('click', function () {
-//   openPopup(imagePopup);
+//   openPopup(popupAddCard);
 // });
 // export default viewPopup;
 // export {openPopup};
