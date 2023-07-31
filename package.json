@@ -1,7 +1,7 @@
 {
-  "name": "yandex_practikum",
+  "name": "mesto_practikum",
   "version": "0.0.1",
-  "description": "Одностраничный адаптивынй сайт написанынй на HTML, CSS, JavaScript.\r Основое примениние которого - делиться своими фотографиями со всеми ползователяим.",
+  "description": "yandex practicum mesto.",
   "main": "/index.js",
   "scripts": {
     "build": "rd /s /q dist && webpack",
@@ -12,16 +12,28 @@
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
+    "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
+    "cssnano": "^6.0.1",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "core-js": "^3.31.1"
-  }
+    "core-js": "^3.31.1",
+    "html-loader": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreyrsKept/mesto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FreyrsKept/mesto/issues"
+  },
+  "homepage": "https://github.com/FreyrsKept/mesto#readme"
 }
