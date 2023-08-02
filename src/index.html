@@ -24,23 +24,22 @@
             <button type="button" class="profile__add"></button>
         </section>
         <section class="cards">
-            <template id="cardTemplate">
-                <ul class="cards__template">
-                    <li class="cards__element">
-                        <button class="cards__delete" type="button"></button>
-                        <img class="cards__image" src="#" alt="">
-                        <div class="cards__info">
-                            <h2 class="cards__title"></h2>
-                            <button type="button" class="cards__like-button"></button>
-                        </div>
-                    </li>
-                </ul>
-            </template>
+            <ul class="cards__template"></ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__description">© 2023 Mesto Russia</p>
     </footer>
+    <template>
+        <li class="cards__element">
+            <button class="cards__delete" type="button"></button>
+            <img class="cards__image" src="#" alt="">
+            <div class="cards__info">
+                <h2 class="cards__title"></h2>
+                <button type="button" class="cards__like-button"></button>
+            </div>
+        </li>
+    </template>
     <div class="popup popup_type_profile">
         <div class="popup__container">
             <form name="popup__form-profile" class="popup__form" id="popup__form-profile" novalidate>

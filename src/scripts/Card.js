@@ -14,16 +14,11 @@ export default class Card {
     }
 
     _setEventListener() {
-        this._buttonLike.addEventListener('click', () => this._toggleLike())
+        this._buttonLike.addEventListener('click', () => this._toggleLike());
         
         this._buttonDelete.addEventListener('click', () => this._remove());
 
-        this._imageItem.addEventListener('click', () => {
-            openPopup(viewPopup)
-            imageView.setAttribute('src', this._link);
-            imageView.setAttribute('alt', this._name);
-            caption.textContent = this._name;
-        });
+        this._imageItem.addEventListener('click', () => this._handleImageClick());
     }
 
     _handleImageClick() {

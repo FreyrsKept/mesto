@@ -23,31 +23,18 @@ const cardAddForm = popupAddCard.querySelector('#popup__form-add');
 const imageName = document.querySelector('#place-name-input');
 const imageLink = document.querySelector('#place-image-input');
 const profileButtonAdd = document.querySelector('.profile__add');
-const closeCardAddButton = document.querySelector('#popup__close-button_add_card');
-
-// карточки
-const cards = document.querySelector('.cards');
 
 // переменные для изменения профиля
 const profilePopup = document.querySelector('.popup_type_profile');
 const profileChangeForm = document.querySelector('#popup__form-profile');
 const userName = document.querySelector('.profile__name');
-const description = document.querySelector('.profile__description');
+const userJob = document.querySelector('.profile__description');
 const nameInput = document.querySelector('#username-input');
 const jobInput = document.querySelector('#description-input');
 const ProfileButtonEdit = document.querySelector('.profile__name-edit');
 
 // переменные для попапа с просмотром
 const viewPopup = document.querySelector('.popup_type_image-view');
-const CardViewButtonClose = document.querySelector('#popup__close-button_view_card');
-
-// переменная всех попапов
-const popups = document.querySelectorAll('.popup');
-
-// //-- Выводим массив карточек
-// function createCard(card) {
-//   return new Card(card, "template").create();
-// }
 
 // Валидация профиля
 const popupFormProfileValidation = new FormValidator(
@@ -71,7 +58,7 @@ const section = new Section(
     return card.create();
    },
   },
-'.cards__template'
+".cards__template"
 );
 
 section.renderCards();
@@ -82,7 +69,7 @@ function handleCardClick(name, link) {
 
 const userInfo = new UserInfo({
   name: userName,
-  job: description,
+  job: userJob,
 });
 
 const popupImage = new PopupWithImage(viewPopup);
@@ -113,7 +100,7 @@ ProfileButtonEdit.addEventListener('click', () => {
   popupEditProfileForm.setInputValues(userInfo.getUserInfo());
   popupEditProfileForm.open();
 })
-//////////////////////////////////////
+//////////////////old////////////////////
 // const renderCard = (card) => {
 //   cards.prepend(createCard(card));
 // };
