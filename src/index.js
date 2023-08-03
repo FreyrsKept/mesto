@@ -68,9 +68,16 @@ function handleCardClick(name, link) {
 };
 
 const userInfo = new UserInfo({
-  name: userName,
-  job: userJob,
+  nameSelector: '.profile__name',
+  jobSelector: '.profile__description'
 });
+
+const handleProfileFormSubmit = (userData) => {
+  nameInput.value = userData.name;
+  jobInput.value = userData.job;
+}
+
+const userData = userInfo.getUserInfo();
 
 const popupImage = new PopupWithImage(viewPopup);
 
@@ -99,7 +106,9 @@ profileButtonAdd.addEventListener('click', () => {
 ProfileButtonEdit.addEventListener('click', () => {
   popupEditProfileForm.setInputValues(userInfo.getUserInfo());
   popupEditProfileForm.open();
+  handleProfileFormSubmit(userData);
 })
+
 //////////////////old////////////////////
 // const renderCard = (card) => {
 //   cards.prepend(createCard(card));
