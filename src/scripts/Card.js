@@ -6,6 +6,18 @@ export default class Card {
         this._link = data.link;
     }
 
+    create() {
+        this._cardItem = this._getTemplate();
+        this._imageItem = this._cardItem.querySelector('.cards__image');
+        this._buttonLike = this._cardItem.querySelector('.cards__like-button');
+        this._buttonDelete = this._cardItem.querySelector('.cards__delete');
+        this._cardItem.querySelector('.cards__title').textContent = this._name;
+        this._imageItem.setAttribute('src', this._link);
+        this._imageItem.setAttribute('alt', this._name);
+        this._setEventListener();
+        return this._cardItem;
+    }
+
     _getTemplate() {
         return document
             .querySelector(this._cardTemplate)
@@ -32,18 +44,6 @@ export default class Card {
 
     _toggleLike() {
         this._buttonLike.classList.toggle('cards__like-button_active')
-    }
-
-    create() {
-        this._cardItem = this._getTemplate();
-        this._imageItem = this._cardItem.querySelector('.cards__image');
-        this._buttonLike = this._cardItem.querySelector('.cards__like-button');
-        this._buttonDelete = this._cardItem.querySelector('.cards__delete');
-        this._cardItem.querySelector('.cards__title').textContent = this._name;
-        this._imageItem.setAttribute('src', this._link);
-        this._imageItem.setAttribute('alt', this._name);
-        this._setEventListener();
-        return this._cardItem;
     }
 
 }
