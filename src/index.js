@@ -83,7 +83,8 @@ const popupImage = new PopupWithImage(viewPopup);
 
 const popupEditProfileForm = new PopupWithForm(profilePopup, (e) => {
   e.preventDefault();
-  userInfo.setUserInfo(userData);
+  const data = popupEditProfileForm.getInputs();
+  userInfo.setUserInfo(data);
   popupEditProfileForm.close();
 })
 
