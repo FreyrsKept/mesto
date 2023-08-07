@@ -1,11 +1,11 @@
-import './pages/index.css';
-import { initialCards } from "../src/scripts/initialCards";
-import Card from "../src/scripts/Card.js";
-import FormValidator from "../src/scripts/FormValidator.js";
-import PopupWithImage from '../src/scripts/PopupWithImage.js'
-import PopupWithForm from '../src/scripts/PopupWithForm.js'
-import UserInfo from '../src/scripts/UserInfo.js'
-import Section from '../src/scripts/Section.js'
+import './index.css';
+import { initialCards } from "../utils/initialCards";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithImage from '../components/PopupWithImage.js'
+import PopupWithForm from '../components/PopupWithForm.js'
+import UserInfo from '../components/UserInfo.js'
+import Section from '../components/Section.js'
 
  // Список классов для валидации
 const settings = {
@@ -49,7 +49,8 @@ const popupFormAddCardValidation = new FormValidator(
   cardAddForm
 );
 popupFormAddCardValidation.enableValidation();
-/////////////// new ////////////////
+
+// Выводим стартовый массив карточек
 const section = new Section(
   {
    items: initialCards,
@@ -84,7 +85,6 @@ const popupImage = new PopupWithImage(viewPopup);
 const popupEditProfileForm = new PopupWithForm(profilePopup, (e) => {
   e.preventDefault();
   const data = popupEditProfileForm.getInputs();
-  console.log(data);
   userInfo.setUserInfo(data);
   popupEditProfileForm.close();
 })

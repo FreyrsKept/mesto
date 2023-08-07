@@ -2,7 +2,7 @@
   "name": "mesto_practikum",
   "version": "0.0.1",
   "description": "yandex practicum mesto.",
-  "main": "/index.js",
+  "main": "/pages/index.js",
   "scripts": {
     "build": "rd /s /q dist && webpack",
     "dev": "webpack serve"
