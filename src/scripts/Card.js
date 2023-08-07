@@ -45,5 +45,4 @@ export default class Card {
     _toggleLike() {
         this._buttonLike.classList.toggle('cards__like-button_active')
     }
-
 }
