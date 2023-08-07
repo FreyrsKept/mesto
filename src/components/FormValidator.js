@@ -27,18 +27,18 @@ export default class FormValidator {
 
   // // функция для показа ошибок валидации
   _showValidError = (element) => {
-    const errorId = this._formItem.querySelector(`.${element.id}-error`)
+    const errorElement = this._formItem.querySelector(`.${element.id}-error`)
     element.classList.add(this._settings.inputErrorClass);
-    errorId.classList.add(this._settings.errorClass);
-    errorId.textContent = element.validationMessage;
+    errorElement.classList.add(this._settings.errorClass);
+    errorElement.textContent = element.validationMessage;
   };
 
   // // функция для скрытия ошибок валидации
   _hideValidError = (element) => {
-    const errorId = this._formItem.querySelector(`.${element.id}-error`)
+    const errorElement = this._formItem.querySelector(`.${element.id}-error`)
     element.classList.remove(this._settings.inputErrorClass)
-    errorId.classList.remove(this._settings.errorClass);
-    errorId.textContent = "";
+    errorElement.classList.remove(this._settings.errorClass);
+    errorElement.textContent = "";
   }
 
   // // функция для проверки всех input на ошибки
