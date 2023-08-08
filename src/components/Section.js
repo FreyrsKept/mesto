@@ -5,8 +5,8 @@ export default class Section {
     this._container = document.querySelector(containerSelector);
   }
 
-  addItem(item) {
-    this._container.prepend(this._renderer(item));
+  addItem(dataItem) {
+    this._container.prepend(this._renderer(dataItem));
   }
 
   renderCards() {

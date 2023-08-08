@@ -82,16 +82,14 @@ const userData = userInfo.getUserInfo();
 
 const popupImage = new PopupWithImage(viewPopup);
 
-const popupEditProfileForm = new PopupWithForm(profilePopup, (e) => {
-  e.preventDefault();
-  const data = popupEditProfileForm.getInputs();
+const popupEditProfileForm = new PopupWithForm(profilePopup, (data) => {
+  console.log(data)
   userInfo.setUserInfo(data);
   popupEditProfileForm.close();
 })
 
-const popupAddCardForm = new PopupWithForm(popupAddCard, (e) => {
-  e.preventDefault();
-  section.addItem(popupAddCardForm.getInputs());
+const popupAddCardForm = new PopupWithForm(popupAddCard, (data) => {
+  section.addItem(popupAddCardForm._getInputValues());
   popupAddCardForm.close();
 });
 
