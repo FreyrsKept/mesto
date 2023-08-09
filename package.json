@@ -4,7 +4,7 @@
   "description": "yandex practicum mesto.",
   "main": "/pages/index.js",
   "scripts": {
-    "build": "rd /s /q dist && webpack",
+    "build": "rimraf dist && webpack --mode production",
     "dev": "webpack serve"
   },
   "author": "freyrs kept",
