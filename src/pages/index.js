@@ -46,14 +46,16 @@ const popupFormAddCardValidation = new FormValidator(
 );
 popupFormAddCardValidation.enableValidation();
 
+const rendererCard = (data) => {
+  const card = new Card(data, "template", handleCardClick).create();
+  section.addItem(card)
+};
+
 // Выводим стартовый массив карточек
 const section = new Section(
   {
    items: initialCards,
-   renderer: (data) => {
-    const card = new Card(data, "template", handleCardClick);
-    return card.create();
-   },
+   renderer: rendererCard
   },
 ".cards__template"
 );
@@ -84,10 +86,18 @@ const popupEditProfileForm = new PopupWithForm(profilePopup, (data) => {
   popupEditProfileForm.close();
 })
 
+// const popupAddCardForm = new PopupWithForm(popupAddCard, (data) => {
+//   console.log(data)
+//   section.addItem(popupAddCardForm._getInputValues());
+//   popupAddCardForm.close();
+// });
+
 const popupAddCardForm = new PopupWithForm(popupAddCard, (data) => {
-  section.addItem(popupAddCardForm._getInputValues());
+  console.log(data)
+  rendererCard(popupAddCardForm._getInputValues());
   popupAddCardForm.close();
 });
+
 
 popupEditProfileForm.setEventListeners();
 popupAddCardForm.setEventListeners();
