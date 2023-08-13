@@ -25,8 +25,6 @@ const profileButtonAdd = document.querySelector('.profile__add');
 // переменные для изменения профиля
 const profilePopup = document.querySelector('.popup_type_profile');
 const profileChangeForm = document.querySelector('#popup__form-profile');
-const nameInput = document.querySelector('#username-input');
-const jobInput = document.querySelector('#description-input');
 const profileButtonEdit = document.querySelector('.profile__name-edit');
 
 // переменные для попапа с просмотром
@@ -71,29 +69,16 @@ const userInfo = new UserInfo({
   jobSelector: '.profile__description'
 });
 
-// const handleProfileFormSubmit = (userData) => {
-//   nameInput.value = userData.name;
-//   jobInput.value = userData.job;
-// }
-
 const userData = userInfo.getUserInfo();
 
 const popupImage = new PopupWithImage(viewPopup);
 
 const popupEditProfileForm = new PopupWithForm(profilePopup, (data) => {
-  console.log(data)
   userInfo.setUserInfo(data);
   popupEditProfileForm.close();
 })
 
-// const popupAddCardForm = new PopupWithForm(popupAddCard, (data) => {
-//   console.log(data)
-//   section.addItem(popupAddCardForm._getInputValues());
-//   popupAddCardForm.close();
-// });
-
 const popupAddCardForm = new PopupWithForm(popupAddCard, (data) => {
-  console.log(data)
   rendererCard(popupAddCardForm._getInputValues());
   popupAddCardForm.close();
 });
@@ -111,5 +96,4 @@ profileButtonAdd.addEventListener('click', () => {
 profileButtonEdit.addEventListener('click', () => {
   popupEditProfileForm.setInputValues(userInfo.getUserInfo());
   popupEditProfileForm.open();
-  handleProfileFormSubmit(userData);
 })
