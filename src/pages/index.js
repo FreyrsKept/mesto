@@ -79,7 +79,7 @@ const popupEditProfileForm = new PopupWithForm(profilePopup, (data) => {
 })
 
 const popupAddCardForm = new PopupWithForm(popupAddCard, (data) => {
-  rendererCard(popupAddCardForm._getInputValues());
+  rendererCard(data);
   popupAddCardForm.close();
 });
 
@@ -89,7 +89,7 @@ popupAddCardForm.setEventListeners();
 popupImage.setEventListeners();
 
 profileButtonAdd.addEventListener('click', () => {
-  popupFormProfileValidation.resetValidation();
+  popupFormAddCardValidation.resetValidation();
   popupAddCardForm.open();
 })
 
