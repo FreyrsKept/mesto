@@ -18,17 +18,17 @@ const settings = {
 };
 
 // переменные для новой карточки
-const popupAddCard = document.querySelector('.popup_type_add-card');
-const cardAddForm = popupAddCard.querySelector('#popup__form-add');
+const popupAddCard = '.popup_type_add-card';
+const cardAddForm = document.querySelector('#popup__form-add');
 const profileButtonAdd = document.querySelector('.profile__add');
 
 // переменные для изменения профиля
-const profilePopup = document.querySelector('.popup_type_profile');
+const profilePopup = '.popup_type_profile';
 const profileChangeForm = document.querySelector('#popup__form-profile');
 const profileButtonEdit = document.querySelector('.profile__name-edit');
 
 // переменные для попапа с просмотром
-const viewPopup = document.querySelector('.popup_type_image-view');
+const viewPopup = '.popup_type_image-view';
 
 // Валидация профиля
 const popupFormProfileValidation = new FormValidator(
