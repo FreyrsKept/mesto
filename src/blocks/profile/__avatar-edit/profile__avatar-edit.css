@@ -9,3 +9,7 @@
   padding: 0;
   cursor: pointer;
 }
+
+.profile__avatar-edit:hover {
+  background: url("../../../images/icons/edit_avatar.svg") center center/auto no-repeat, rgb(0, 0, 0);
+}

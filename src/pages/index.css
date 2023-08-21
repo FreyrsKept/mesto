@@ -9,7 +9,6 @@
 /* профиль */
 @import url(/src/blocks/profile/profile.css);
 @import url(/src/blocks/profile/__add/profile__add.css);
-@import url(/src/blocks/profile/__avatar-area/profile__avatar-area.css);
 @import url(/src/blocks/profile/__avatar-edit/profile__avatar-edit.css);
 @import url(/src/blocks/profile/__avatar/profile__avatar.css);
 @import url(/src/blocks/profile/__description/profile__description.css);
