@@ -37,7 +37,10 @@
             <img class="cards__image" src="#" alt="">
             <div class="cards__info">
                 <h2 class="cards__title"></h2>
-                <button type="button" class="cards__like-button"></button>
+                <div class="cards__like-wrp">
+                    <button type="button" class="cards__like-button"></button>
+                    <p class="cards__like-counter">0</p>
+                </div>
             </div>
         </li>
     </template>
@@ -76,6 +79,26 @@
                 <figcaption class="popup__caption"></figcaption>
                 <button type="button" id="popup__close-button_view_card" class="popup__close" aria-label="Закрыть"></button>
             </figure>
+        </div>
+    </div>
+    <div class="popup popup_type_avatar-edit">
+        <div class="popup__container">
+            <form action="#" name="avatar-edit" id="avatar-edit" class="popup__form popup__form_type_avatar-edit" novalidate>
+                <h3 class="popup__title">Обновить аватар</h3>
+                <input type="url" name="avatar" form="avatar-edit" required placeholder="Ссылка на картинку" class="popup__input popup__input_avatar-link" id="avatar-link-input">
+                <span class="avatar-input-error popup__input-error"></span>
+                <button type="submit" class="popup__submit">Сохранить</button>
+            </form>
+            <button type="button" id="popup__close-button_avatar-edit" class="popup__close" aria-label="Закрыть"></button>
+        </div>
+    </div>
+    <div class="popup popup_type_card-delete">
+        <div class="popup__container">
+            <form action="#" name="card__delete-form" id="card__delete-form" class="popup__form popup__form_type_card-delete">
+                <h3 class="popup__title">Вы уверены?</h3>
+                <button type="submit" class="popup__submit">Да</button>
+            </form>
+            <button type="button" id="popup__close-button_card-delete" class="popup__close" aria-label="Закрыть"></button>
         </div>
     </div>
 </body>
