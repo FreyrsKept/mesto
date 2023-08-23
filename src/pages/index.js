@@ -6,6 +6,7 @@ import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
 import { UserInfo } from '../components/UserInfo.js'
 import { Section } from '../components/Section.js'
+import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import { api } from '../components/Api.js'
 
 // Берем информацию с сервера
@@ -23,9 +24,6 @@ export const userInfo = new UserInfo({
   jobSelector: '.profile__description',
   avatarSelector: '.profile__avatar'
 });
-
-export const popupImage = new PopupWithImage(viewPopup);
-popupImage.setEventListeners();
 
 // Список классов для валидации
 const settings = {
@@ -79,7 +77,10 @@ const cardList = new Section({
 }, cardsContainerSelector);
 
 export const popupDeleteCard = new PopupWithConfirmation(deleteCardPopupSelector);
-deleteCardPopupSelector.setEventListeners();
+popupDeleteCard.setEventListeners();
+
+export const popupImage = new PopupWithImage(viewPopup);
+popupImage.setEventListeners();
 
 // Попап с изменением профиля
 const popupEditProfile = new PopupWithForm({

@@ -18,7 +18,7 @@ export class Card {
         this._cardlikeCounterItem = this._item.querySelector('.cards__like-counter');
         this._cardDeleteItem = this._item.querySelector('.cards__delete');
     }
-// Отрисовка картоыек
+// Отрисовка карточек
     create() {
         this._cardTitleItem.textContent = this._name;
         this._imageItem.src = this._link;
