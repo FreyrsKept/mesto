@@ -1,11 +1,11 @@
 import './index.css';
 // import { initialCards } from "../utils/initialCards";
-import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import PopupWithImage from '../components/PopupWithImage.js'
-import PopupWithForm from '../components/PopupWithForm.js'
-import UserInfo from '../components/UserInfo.js'
-import Section from '../components/Section.js'
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { PopupWithImage } from '../components/PopupWithImage.js'
+import { PopupWithForm } from '../components/PopupWithForm.js'
+import { UserInfo } from '../components/UserInfo.js'
+import { Section } from '../components/Section.js'
 import { api } from '../components/Api.js'
 
 // Берем информацию с сервера
@@ -18,16 +18,16 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     console.log(err);
   })
 
-  export const userInfo = new UserInfo({
-    nameSelector: '.profile__name',
-    jobSelector: '.profile__description',
-    avatarSelector: '.profile__avatar'
-  });
+export const userInfo = new UserInfo({
+  nameSelector: '.profile__name',
+  jobSelector: '.profile__description',
+  avatarSelector: '.profile__avatar'
+});
 
-  export const popupImage = new PopupWithImage(viewPopup);
-  popupImage.setEventListeners();
+export const popupImage = new PopupWithImage(viewPopup);
+popupImage.setEventListeners();
 
- // Список классов для валидации
+// Список классов для валидации
 const settings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -70,7 +70,7 @@ validation(settings);
 // Выводим стартовый массив карточек
 const cardList = new Section({
   renderer: (item) => {
-    const newCard = new Card (item, cardTemplateSelector, handleCardClick, handleDeleteClick, handleCardLike, {
+    const newCard = new Card(item, cardTemplateSelector, handleCardClick, handleDeleteClick, handleCardLike, {
       userId: userInfo.getUserId()
     });
     const cardElement = newCard.createCard();
@@ -86,7 +86,7 @@ const popupEditProfile = new PopupWithForm({
   handleFromSubmit: (userData) => {
     popupEditProfile.renderLoading(true);
     api.sendUserInfo(userData)
-      .then((newUserData) =>{
+      .then((newUserData) => {
         userInfo.setUserInfo(newUserData);
       })
       .then(() => popupEditProfile.close())

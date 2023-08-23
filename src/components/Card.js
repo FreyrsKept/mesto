@@ -1,4 +1,4 @@
-export default class Card {
+export class Card {
     constructor(cardData, cardTemplate, handleCardClick, handleDeleteClick, handleCardLike, { userId }) {
         this.cardData = cardData;
         this._handleCardClick = handleCardClick;
