@@ -8,6 +8,11 @@ import { UserInfo } from '../components/UserInfo.js'
 import { Section } from '../components/Section.js'
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import { api } from '../components/Api.js'
+import {
+  handleDeleteClick,
+  handleCardLike,
+  handleCardClick,
+} from '../components/Card.js'
 
 // Берем информацию с сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -41,9 +46,11 @@ const cardAddForm = document.querySelector('#popup__form-add');
 const profileButtonAdd = document.querySelector('.profile__add');
 const cardsContainerSelector = '.cards__template';
 const deleteCardPopupSelector = '.popup_type_card-delete';
+const cardsElementsSelector = '.cards__element'
 
 // переменные для изменения профиля
 const editAvatarPopupSelector = '.popup_type_avatar-edit';
+const profileAvatarEdit = document.querySelector('.profile__avatar-edit');
 const editProfilePopupSelector = '.popup_type_profile';
 const profileButtonEdit = document.querySelector('.profile__name-edit');
 
@@ -68,7 +75,7 @@ validation(settings);
 // Выводим стартовый массив карточек
 const cardList = new Section({
   renderer: (item) => {
-    const newCard = new Card(item, cardTemplateSelector, handleCardClick, handleDeleteClick, handleCardLike, {
+    const newCard = new Card(item, cardsElementsSelector, handleCardClick, handleDeleteClick, handleCardLike, {
       userId: userInfo.getUserId()
     });
     const cardElement = newCard.createCard();
@@ -84,7 +91,7 @@ popupImage.setEventListeners();
 
 // Попап с изменением профиля
 const popupEditProfile = new PopupWithForm({
-  handleFromSubmit: (userData) => {
+  handleFormSubmit: (userData) => {
     popupEditProfile.renderLoading(true);
     api.sendUserInfo(userData)
       .then((newUserData) => {
@@ -101,7 +108,7 @@ popupEditProfile.setEventListeners();
 
 // Попап добавления карточки
 const popupAddCard = new PopupWithForm({
-  handleFromSubmit: (cardData) => {
+  handleFormSubmit: (cardData) => {
     popupAddCard.renderLoading(true);
     api.sendNewCardInfo(cardData)
       .then((newCardData) => {
@@ -118,7 +125,7 @@ popupAddCard.setEventListeners();
 
 // Попап изменения аватара
 const popupEditAvatar = new PopupWithForm({
-  handleFromSubmit: (avatarData) => {
+  handleFormSubmit: (avatarData) => {
     popupEditAvatar.renderLoading(true);
     api.setUserAvatar(avatarData)
       .then((newAvatarData) => {
