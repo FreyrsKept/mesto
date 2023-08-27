@@ -18,7 +18,7 @@ import {
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo(userData);
-    cardList.renderItems(cards.reverse());
+    cardList.renderCards(cards.reverse());
   })
   .catch((err) => {
     console.log(err);
@@ -42,7 +42,6 @@ const settings = {
 
 // переменные для карточек
 const popupAddCardSelector = '.popup_type_add-card';
-const cardAddForm = document.querySelector('#popup__form-add');
 const profileButtonAdd = document.querySelector('.profile__add');
 const cardsContainerSelector = '.cards__template';
 const deleteCardPopupSelector = '.popup_type_card-delete';
@@ -61,10 +60,10 @@ const viewPopup = '.popup_type_image-view';
 const formValidator = {}
 
 // Валидация форм
-const validation = (cfg) => {
-  const formList = document.querySelectorAll(cfg.form);
+const validation = (settings) => {
+  const formList = document.querySelectorAll(settings.form);
   formList.forEach((formItem) => {
-    const validator = new FormValidator(cfg, formItem);
+    const validator = new FormValidator(settings, formItem);
     const formName = formItem.getAttribute('name');
     formValidator[formName] = validator;
     validator.validation()
@@ -142,18 +141,18 @@ popupEditAvatar.setEventListeners();
 
 // Слушатели попапов
 profileButtonAdd.addEventListener('click', () => {
-  formValidator['popup__form-add'].resetValidation()
+  formValidator('popup__form-add').resetValidation()
   popupAddCard.open();
 })
 
 profileButtonEdit.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   popupEditProfile.setInputValues(userData);
-  formValidator['popup__form-profile'].resetValidation()
+  formValidator('popup__form-profile').resetValidation()
   popupEditProfile.open();
 })
 
 profileAvatarEdit.addEventListener('click', () => {
-  formValidator['avatar-edit'].resetValidation()
+  formValidator('avatar-edit').resetValidation()
   popupEditAvatar.open();
 })

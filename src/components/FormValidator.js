@@ -75,10 +75,12 @@ export class FormValidator {
     });
   };
 
-  resetValidation() {
+  resetValidation = () => {
     this._disableSubmitButton();
     this._inputList.forEach((element) => {
+      if (element.classList.contains(this._inputErrorClass)) {
       this._hideValidError(element);
+      }
     });
   }
 }
