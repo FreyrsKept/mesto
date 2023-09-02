@@ -1,19 +1,19 @@
 export class Section {
-  constructor({ renderer }, containerSelector) {
-    // this._cards = items;
+  constructor({ items, renderer }, containerSelector) {
+    this._cards = items;
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
   }
-// Сломано
+
   renderCards(items) {
     this._clear();
-    items.forEach((card) => {this.addItem(card);
-    });
-  }
+    items.forEach((card) => {
+       this.addItem(card);
+      });
+  };
 
-  addItem(items) {
-    const card = this._renderer(items);
-    this._container.prepend(card);
+  addItem(elementNode) {
+    this._container.prepend(this._renderer(elementNode));
   }
 
   _clear() {

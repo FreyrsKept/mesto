@@ -43,9 +43,9 @@ const settings = {
 // переменные для карточек
 const popupAddCardSelector = '.popup_type_add-card';
 const profileButtonAdd = document.querySelector('.profile__add');
-const cardsContainerSelector = '.cards__template';
+const cardsContainerSelector = '.cards__list';
 const deleteCardPopupSelector = '.popup_type_card-delete';
-const cardsElementsSelector = '.cards__element'
+const cardsElementsSelector = '.cards__element';
 
 // переменные для изменения профиля
 const editAvatarPopupSelector = '.popup_type_avatar-edit';
@@ -73,12 +73,17 @@ validation(settings);
 
 // Выводим стартовый массив карточек
 const cardList = new Section({
+  items: [],
   renderer: (item) => {
-    const newCard = new Card(item, cardsElementsSelector, handleCardClick, handleDeleteClick, handleCardLike, {
-      userId: userInfo.getUserId()
-    });
-    const cardElement = newCard.createCard();
-    return cardElement;
+    const newCard = new Card(
+      item,
+      'cards__template',
+      userInfo.getUserId(),
+      handleCardClick, 
+      handleDeleteClick, 
+      handleCardLike,
+    );
+    return newCard.create();
   }
 }, cardsContainerSelector);
 
@@ -141,18 +146,18 @@ popupEditAvatar.setEventListeners();
 
 // Слушатели попапов
 profileButtonAdd.addEventListener('click', () => {
-  formValidator('popup__form-add').resetValidation()
+  formValidator['popup__form-add'].resetValidation()
   popupAddCard.open();
 })
 
 profileButtonEdit.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   popupEditProfile.setInputValues(userData);
-  formValidator('popup__form-profile').resetValidation()
+  formValidator['popup__form-profile'].resetValidation()
   popupEditProfile.open();
 })
 
 profileAvatarEdit.addEventListener('click', () => {
-  formValidator('avatar-edit').resetValidation()
+  formValidator['avatar-edit'].resetValidation()
   popupEditAvatar.open();
 })
