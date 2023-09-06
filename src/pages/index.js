@@ -77,7 +77,7 @@ const cardList = new Section({
   renderer: (item) => {
     const newCard = new Card(
       item,
-      'cards__template',
+      '.cards__template',
       userInfo.getUserId(),
       handleCardClick, 
       handleDeleteClick, 
