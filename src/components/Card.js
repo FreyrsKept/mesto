@@ -64,11 +64,11 @@ export class Card {
   }
   // Лайк
   _handleCardLike() {
-    this._cardLikeItem.classList.toggle('cards__like-button_active')
+    this._cardLikeItem.classList.toggle('cards__like-button_active');
   }
   // Открытие карточки
-  _handleCardClick() {
-    this._handleCardClick(this._name, this._link)
+  _handleImageClick() {
+    this._handleCardClick(this._name, this._link);
   }
   // Счетчик лайков
   cardLikeCounter(data) {
@@ -77,10 +77,10 @@ export class Card {
     this._handleCardLike();
   }
   // Слушатели
-  _setEventListener() {
+  _setEventListener = () => {
     this._cardImageItem.addEventListener('click', () => {
-      // this._handleCardClick(this._name, this._link);
-    this._handleCardClick()
+      console.log(this)
+      this._handleImageClick(this._name, this._link);
     });
 
     this._cardLikeItem.addEventListener('click', () => {
@@ -129,7 +129,7 @@ export const handleCardLike = (card) => {
       })
   }
 }
-
+// функция открытия карточки
 export const handleCardClick = (cardTitleItem, cardImageItem) => {
   popupImage.open(cardTitleItem, cardImageItem);
 }

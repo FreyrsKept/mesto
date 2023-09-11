@@ -41,17 +41,22 @@ const settings = {
 };
 
 // переменные для карточек
-const popupAddCardSelector = '.popup_type_add-card';
+const popupAddCardSelector = document.querySelector('.popup_type_add-card');
 const profileButtonAdd = document.querySelector('.profile__add');
 const cardsContainerSelector = '.cards__list';
 const deleteCardPopupSelector = '.popup_type_card-delete';
 const cardsElementsSelector = '.cards__element';
 
 // переменные для изменения профиля
-const editAvatarPopupSelector = '.popup_type_avatar-edit';
+const editAvatarPopupSelector = document.querySelector('.popup_type_avatar-edit');
 const profileAvatarEdit = document.querySelector('.profile__avatar-edit');
-const editProfilePopupSelector = '.popup_type_profile';
+const editProfilePopupSelector = document.querySelector('.popup_type_profile');
 const profileButtonEdit = document.querySelector('.profile__name-edit');
+
+// формы
+const popupFormAdd = popupAddCardSelector.querySelector('.popup__form');
+const popupFormAvatar = editAvatarPopupSelector.querySelector('.popup__form');
+const popupFormProfile = editProfilePopupSelector.querySelector('.popup__form');
 
 // переменные для попапа с просмотром
 const viewPopup = '.popup_type_image-view';
@@ -71,6 +76,13 @@ const validation = (settings) => {
 };
 validation(settings);
 
+const profileButtonAddValidation = new FormValidator(settings, popupFormAdd);
+profileButtonAddValidation.enableValidation();
+const popupAvatarUpdateValidation = new FormValidator(settings, popupFormAvatar);
+popupAvatarUpdateValidation.enableValidation();
+const popupUserValidation = new FormValidator(settings, popupFormProfile)
+popupUserValidation.enableValidation();
+
 // Выводим стартовый массив карточек
 const cardList = new Section({
   items: [],
@@ -78,10 +90,10 @@ const cardList = new Section({
     const newCard = new Card(
       item,
       '.cards__template',
-      userInfo.getUserId(),
-      handleCardClick, 
-      handleDeleteClick, 
+      handleCardClick,
+      handleDeleteClick,
       handleCardLike,
+      userInfo.getUserId(),
     );
     return newCard.create();
   }
@@ -146,18 +158,18 @@ popupEditAvatar.setEventListeners();
 
 // Слушатели попапов
 profileButtonAdd.addEventListener('click', () => {
-  formValidator['popup__form-add'].resetValidation()
+  profileButtonAddValidation.resetValidation()
   popupAddCard.open();
 })
 
 profileButtonEdit.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   popupEditProfile.setInputValues(userData);
-  formValidator['popup__form-profile'].resetValidation()
+  popupUserValidation.resetValidation()
   popupEditProfile.open();
 })
 
 profileAvatarEdit.addEventListener('click', () => {
-  formValidator['avatar-edit'].resetValidation()
+  popupAvatarUpdateValidation.resetValidation()
   popupEditAvatar.open();
 })
