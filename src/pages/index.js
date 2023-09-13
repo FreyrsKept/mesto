@@ -122,6 +122,19 @@ const popupEditProfile = new PopupWithForm({
 }, editProfilePopupSelector)
 popupEditProfile.setEventListeners();
 
+// // Попап изменения профиля - апдейт
+// const popupEditProfile = new PopupWithForm(editProfilePopupSelector, userData =>{
+//   popupEditProfile.renderLoading(true);
+//   api.sendUserInfo(userData)
+//   .then((newUserData) => {
+//     userInfo.setUserInfo(newUserData);
+//     popupEditProfile.close();
+//   })
+//   .catch(err => console.log(err))
+//   .finally(() => popupEditProfile.renderLoading(false));
+// })
+
+
 // Попап добавления карточки
 const popupAddCard = new PopupWithForm({
   handleFormSubmit: (cardData) => {

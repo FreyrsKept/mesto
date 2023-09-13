@@ -1,11 +1,13 @@
 import { Popup } from "./Popup";
 
 export class PopupWithConfirmation extends Popup {
-    constructor(popupSelector) {
-        super(popupSelector);
+    constructor(popup) {
+        super(popup);
+        console.log(this._popup);
         this._formElement = this._popup.querySelector('.popup__form');
         this._submitForm = this._formElement.querySelector('.popup__submit');
-        this._submitFormText = this._submitForm.textContent;
+        // this._submitForm = this._popup.querySelector('.popup__submit');
+        // this._submitFormText = this._submitForm.textContent;
     }
 
     setEventListeners() {
@@ -13,7 +15,10 @@ export class PopupWithConfirmation extends Popup {
             evt.preventDefault();
             this._handleFormSubmit();
         });
-        super.setEventListeners();
+        // super.setEventListeners();
+        // this._submitForm.addEventListener('click', () => {
+        //     this._handleFormSubmit();
+        // })
     };
 
     handleFormSubmit(func) {
