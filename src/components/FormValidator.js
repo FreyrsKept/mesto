@@ -28,6 +28,7 @@ export class FormValidator {
   // // функция для показа ошибок валидации
   _showValidError = (element) => {
     const errorElement = this._formItem.querySelector(`.${element.id}-error`)
+    console.log(this._formItem);
     element.classList.add(this._settings.inputErrorClass);
     errorElement.classList.add(this._settings.errorClass);
     errorElement.textContent = element.validationMessage;

@@ -19,7 +19,6 @@ export class Card {
     this._userId = userId;
     this._likes = card.likes;
     this._cardOwnerId = card.owner._id;
-    console.log(this._cardTemplate);
     // this._card = this._getTemplate();
     // this._cardImageItem = this._card.querySelector('.cards__image');
     // this._cardTitleItem = this._card.querySelector('.cards__title');
@@ -79,7 +78,6 @@ export class Card {
   // Слушатели
   _setEventListener = () => {
     this._cardImageItem.addEventListener('click', () => {
-      console.log(this)
       this._handleImageClick(this._name, this._link);
     });
 
