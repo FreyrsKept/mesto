@@ -17,7 +17,7 @@ class Api {
       headers: this._headers
     })
   }
-  // Метод замены информации о пользователе
+  // Метод отправки информации о пользователе
   sendUserInfo(userData) {
     return this._request(`${this._serverUrl}/users/me`, {
       method: 'PATCH',

@@ -1,4 +1,3 @@
-// CLASS INSTANCE IMPORT
 import { api } from '../components/Api.js';
 import {
   userInfo,
@@ -7,24 +6,19 @@ import {
 } from '../pages/index.js';
 
 export class Card {
-  constructor(card, cardTemplate, handleCardClick, handleDeleteClick, handleCardLike, { userId }) {
-    // this.card = card;
+  constructor(cardData, cardTemplate, handleCardClick, handleDeleteClick, handleCardLike, { userId }) {
+    this.cardData = cardData;
+    console.log(cardData);
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLike = handleCardLike;
     this._cardTemplate = cardTemplate;
-    this._name = card.name;
-    this._link = card.link;
-    this._cardId = card._id;
+    this._name = cardData.name;
+    this._link = cardData.link;
+    this._cardId = cardData._id;
     this._userId = userId;
-    this._likes = card.likes;
-    this._cardOwnerId = card.owner._id;
-    // this._card = this._getTemplate();
-    // this._cardImageItem = this._card.querySelector('.cards__image');
-    // this._cardTitleItem = this._card.querySelector('.cards__title');
-    // this._cardLikeItem = this._card.querySelector('.cards__like-button');
-    // this._cardlikeCounterItem = this._card.querySelector('.cards__like-counter');
-    // this._cardDeleteItem = this._card.querySelector('.cards__delete');
+    this._likes = cardData.likes;
+    this._cardOwnerId = cardData.owner._id;
   }
   // Отрисовка карточек
   create = () => {
@@ -35,8 +29,6 @@ export class Card {
     this._cardlikeCounterItem = this._card.querySelector('.cards__like-counter');
     this._cardDeleteItem = this._card.querySelector('.cards__delete');
     this._cardTitleItem.textContent = this._name;
-    // this._cardImageItem.setAttribute('src', this._link);
-    // this._cardImageItem.setAttribute('alt', this._name);
     this._cardImageItem.src = this._link;
     this._cardImageItem.alt = this._name;
     this._cardlikeCounterItem.textContent = this._likes.lenght;
@@ -70,9 +62,9 @@ export class Card {
     this._handleCardClick(this._name, this._link);
   }
   // Счетчик лайков
-  cardLikeCounter(data) {
-    this.data = data;
-    this._cardlikeCounterItem.textContent = data.likes.lenght;
+  cardLikeCounter(cardData) {
+    this.cardData = cardData;
+    this._cardlikeCounterItem.textContent = cardData.likes.lenght;
     this._handleCardLike();
   }
   // Слушатели
@@ -90,6 +82,7 @@ export class Card {
     });
   }
 }
+
 // Удаление карточки
 export const handleDeleteClick = (card) => {
   popupDeleteCard.open();
@@ -109,10 +102,11 @@ export const handleDeleteClick = (card) => {
 
 // Лайк карточки
 export const handleCardLike = (card) => {
-  if (card.card.likes.find((user) => user._id === userInfo.getUserId())) {
+  console.log(cardData);
+  if (card.cardData.likes.find((user) => user._id === userInfo.getUserId())) {
     api.deleteCardLike(card.getCardId())
-      .then((card) => {
-        card.handleCardLikeUpdate(card)
+      .then((cardData) => {
+        card.handleCardLikeUpdate(cardData)
       })
       .catch((err) => {
         console.log(err);
@@ -120,7 +114,7 @@ export const handleCardLike = (card) => {
   } else {
     api.setCardLike(card.getCardId())
       .then((card) => {
-        card.handleCardLikeUpdate(card)
+        card.handleCardLikeUpdate(cardData)
       })
       .catch((err) => {
         console.log(err);

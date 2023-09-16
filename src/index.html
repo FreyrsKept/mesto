@@ -39,7 +39,7 @@
                 <h2 class="cards__title"></h2>
                 <div class="cards__like-wrp">
                     <button type="button" class="cards__like-button"></button>
-                    <p class="cards__like-counter"></p>
+                    <p class="cards__like-counter">0</p>
                 </div>
             </div>
         </li>
@@ -50,7 +50,7 @@
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <input name="name" id="username-input" type="text" placeholder="Ваше имя" class="popup__input" minlength="2" maxlength="40" required>
                 <span class="username-input-error popup__input-error"></span>
-                <input name="job" id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" minlength="2" maxlength="200" required>
+                <input name="about" id="description-input" type="text" placeholder="Ваша профессия" class="popup__input" minlength="2" maxlength="200" required>
                 <span class="description-input-error popup__input-error"></span>
                 <button type="submit" class="popup__submit">Сохранить</button>
             </form>
@@ -85,8 +85,9 @@
         <div class="popup__container">
             <form action="#" name="popup__form-avatar" class="popup__form popup__form_type_avatar-edit" id="avatar-edit" novalidate>
                 <h3 class="popup__title">Обновить аватар</h3>
-                <input type="url" name="avatar" form="avatar-edit" required placeholder="Ссылка на картинку" class="popup__input popup__input_avatar-link" id="avatar-link-input">
-                <span class="avatar-input-error popup__input-error"></span>
+                <input type="url" name="avatar" form="avatar-edit" required placeholder="Ссылка на картинку" 
+                    class="popup__input popup__input_avatar-link" id="avatar-link-input">
+                    <span class="avatar-link-input-error popup__input-error"></span>
                 <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button type="button" id="popup__close-button_avatar-edit" class="popup__close" aria-label="Закрыть"></button>

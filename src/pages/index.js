@@ -45,25 +45,12 @@ const popupAddCardSelector = '.popup_type_add-card';
 const profileButtonAdd = document.querySelector('.profile__add');
 const cardsContainerSelector = '.cards__list';
 const deleteCardPopupSelector = '.popup_type_card-delete';
-const cardsElementsSelector = '.cards__element';
 
 // переменные для изменения профиля
 const editAvatarPopupSelector = '.popup_type_avatar-edit';
 const profileAvatarEdit = document.querySelector('.profile__avatar-edit');
 const editProfilePopupSelector = '.popup_type_profile';
 const profileButtonEdit = document.querySelector('.profile__name-edit');
-
-// формы
-// const popupFormAdd = popupAddCardSelector.querySelector('.popup__form');
-// const popupFormAvatar = editAvatarPopupSelector.querySelector('.popup__form');
-// const popupFormProfile = editProfilePopupSelector.querySelector('.popup__form');
-
-// const profileButtonAddValidation = new FormValidator(settings, popupFormAdd);
-// profileButtonAddValidation.enableValidation();
-// const popupAvatarUpdateValidation = new FormValidator(settings, popupFormAvatar);
-// popupAvatarUpdateValidation.enableValidation();
-// const popupUserValidation = new FormValidator(settings, popupFormProfile)
-// popupUserValidation.enableValidation();
 
 // переменные для попапа с просмотром
 const viewPopup = '.popup_type_image-view';
@@ -73,9 +60,7 @@ const formValidator = []
 // Валидация форм - //upd
 const enableValidation = (settings) => {
   const formList = document.querySelectorAll(settings.formSelector);
-  // console.log(formList);
   formList.forEach((formItem) => {
-    // console.log(formItem);
     const validator = new FormValidator(settings, formItem);
     const formName = formItem.getAttribute('name');
     formValidator[formName] = validator;
@@ -123,18 +108,6 @@ const popupEditProfile = new PopupWithForm({
 }, editProfilePopupSelector)
 popupEditProfile.setEventListeners();
 
-// // Попап изменения профиля - old
-// const popupEditProfile = new PopupWithForm(editProfilePopupSelector, userData =>{
-//   popupEditProfile.renderLoading(true);
-//   api.sendUserInfo(userData)
-//   .then((newUserData) => {
-//     userInfo.setUserInfo(newUserData);
-//     popupEditProfile.close();
-//   })
-//   .catch(err => console.log(err))
-//   .finally(() => popupEditProfile.renderLoading(false));
-// })
-
 // Попап добавления карточки
 const popupAddCard = new PopupWithForm({
   handleFormSubmit: (cardData) => {
@@ -171,8 +144,6 @@ popupEditAvatar.setEventListeners();
 
 // Слушатели попапов
 profileButtonAdd.addEventListener('click', () => {
-  // profileButtonAddValidation.resetValidation()
-  // console.log(formValidator);
   formValidator['popup__form-add'].resetValidation()
   popupAddCard.open();
 })
@@ -180,15 +151,11 @@ profileButtonAdd.addEventListener('click', () => {
 profileButtonEdit.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   popupEditProfile.setInputValues(userData);
-  // popupUserValidation.resetValidation()
-  // console.log(formValidator);
   formValidator['popup__form-profile'].resetValidation()
   popupEditProfile.open();
 })
 
 profileAvatarEdit.addEventListener('click', () => {
-  // popupAvatarUpdateValidation.resetValidation()
-  // console.log(formValidator);
   formValidator['popup__form-avatar'].resetValidation()
   popupEditAvatar.open();
 })
