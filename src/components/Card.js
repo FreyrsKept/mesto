@@ -55,7 +55,7 @@ export class Card {
     this._card = null;
   }
   // Лайк
-  _handleCardLike() {
+  _handleCardLikeButton() {
     this._cardLikeItem.classList.toggle('cards__like-button_active');
   }
   // Открытие карточки
@@ -66,7 +66,7 @@ export class Card {
   cardLikeCounter(cardData) {
     this.cardData = cardData;
     this._cardlikeCounterItem.textContent = cardData.likes.lenght;
-    this._handleCardLike();
+    this._handleCardLikeButton();
   }
   // Слушатели
   _setEventListener = () => {
@@ -107,7 +107,7 @@ export const handleCardLike = (card) => {
   if (card.cardData.likes.find((user) => user._id === userInfo.getUserId())) {
     api.deleteCardLike(card.getCardId())
       .then((cardData) => {
-        card.handleCardLikeUpdate(cardData)
+        card.cardLikeCounter(cardData)
       })
       .catch((err) => {
         console.log(err);
@@ -115,7 +115,7 @@ export const handleCardLike = (card) => {
   } else {
     api.setCardLike(card.getCardId())
       .then((card) => {
-        card.handleCardLikeUpdate(cardData)
+        card.cardLikeCounter(cardData)
       })
       .catch((err) => {
         console.log(err);
