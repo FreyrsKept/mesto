@@ -1,3 +1,4 @@
+// Импорт для интерактива с карточками
 import { api } from '../components/Api.js';
 import {
   userInfo,
@@ -13,12 +14,12 @@ export class Card {
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLike = handleCardLike;
     this._cardTemplate = cardTemplate;
-    this._name = cardData.name;
-    this._link = cardData.link;
-    this._cardId = cardData._id;
+    this._name = this.cardData.name;
+    this._link = this.cardData.link;
+    this._cardId = this.cardData._id;
     this._userId = userId;
-    this._likes = cardData.likes;
-    this._cardOwnerId = cardData.owner._id;
+    this._likes = this.cardData.likes;
+    this._cardOwnerId = this.cardData.owner._id;
   }
   // Отрисовка карточек
   create = () => {
@@ -74,11 +75,11 @@ export class Card {
     });
 
     this._cardLikeItem.addEventListener('click', () => {
-      this._handleCardLike(this)
+      this._handleCardLike(this);
     });
 
     this._cardDeleteItem.addEventListener('click', () => {
-      this._handleDeleteClick(this)
+      this._handleDeleteClick(this);
     });
   }
 }
