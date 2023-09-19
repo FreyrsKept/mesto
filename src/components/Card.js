@@ -7,9 +7,8 @@ import {
 } from '../pages/index.js';
 
 export class Card {
-  constructor(cardData, cardTemplate, handleCardClick, handleDeleteClick, handleCardLike, { userId }) {
+  constructor(cardData, cardTemplate, handleCardClick, handleDeleteClick, handleCardLike, userId) {
     this.cardData = cardData;
-    console.log(cardData);
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleCardLike = handleCardLike;
@@ -19,7 +18,6 @@ export class Card {
     this._cardId = this.cardData._id;
     this._userId = userId;
     this._likes = this.cardData.likes;
-    console.log(this._likes);
     this._cardOwnerId = this.cardData.owner._id;
   }
   // Отрисовка карточек
@@ -33,9 +31,8 @@ export class Card {
     this._cardTitleItem.textContent = this._name;
     this._cardImageItem.src = this._link;
     this._cardImageItem.alt = this._name;
-    // this._cardlikeCounterItem.textContent = this._likes.lenght;
     if (this._cardOwnerId !== this._userId) this._cardDeleteItem.classList.toggle('card__like-button_inactive');
-    // if (this._likes.find((user) => user._id === this._userId)) this.cardLikeCounter(this.cardData);
+    if (this._likes.find((user) => user._id === this._userId)) this.cardLikeCounter(this.cardData);
     this.cardLikeCounter(this.cardData);
     this._setEventListener();
     return this._card;
@@ -71,7 +68,6 @@ export class Card {
   // Счетчик лайков
   cardLikeCounter(cardData) {
     this.cardData = cardData;
-    console.log(this._likes);
     this._cardlikeCounterItem.textContent = cardData.likes.length;
     this._handleCardLikeButton(cardData);
   }
