@@ -35,7 +35,7 @@ export class Card {
     this._cardImageItem.alt = this._name;
     // this._cardlikeCounterItem.textContent = this._likes.lenght;
     if (this._cardOwnerId !== this._userId) this._cardDeleteItem.classList.toggle('card__btn-del_inactive');
-    if (this._likes.find((user) => user._id === this._userId)) this._handleCardLikeButton();
+    if (this._likes.find((user) => user._id === this._userId)) this._cardLikeCounter(this.cardData);
     this._setEventListener();
     return this._card;
   }
@@ -67,7 +67,7 @@ export class Card {
   cardLikeCounter(cardData) {
     this.cardData = cardData;
     console.log(this._likes);
-    this._cardlikeCounterItem.textContent = cardData.likes.lenght;
+    this._cardlikeCounterItem.textContent = cardData.likes.length;
     this._handleCardLikeButton();
   }
   // Слушатели
