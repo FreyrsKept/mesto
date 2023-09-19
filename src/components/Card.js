@@ -19,6 +19,7 @@ export class Card {
     this._cardId = this.cardData._id;
     this._userId = userId;
     this._likes = this.cardData.likes;
+    console.log(this._likes);
     this._cardOwnerId = this.cardData.owner._id;
   }
   // Отрисовка карточек
@@ -32,7 +33,7 @@ export class Card {
     this._cardTitleItem.textContent = this._name;
     this._cardImageItem.src = this._link;
     this._cardImageItem.alt = this._name;
-    this._cardlikeCounterItem.textContent = this._likes.lenght;
+    // this._cardlikeCounterItem.textContent = this._likes.lenght;
     if (this._cardOwnerId !== this._userId) this._cardDeleteItem.classList.toggle('card__btn-del_inactive');
     if (this._likes.find((user) => user._id === this._userId)) this._handleCardLikeButton();
     this._setEventListener();
@@ -65,6 +66,7 @@ export class Card {
   // Счетчик лайков
   cardLikeCounter(cardData) {
     this.cardData = cardData;
+    console.log(this._likes);
     this._cardlikeCounterItem.textContent = cardData.likes.lenght;
     this._handleCardLikeButton();
   }
@@ -103,7 +105,7 @@ export const handleDeleteClick = (card) => {
 
 // Лайк карточки
 export const handleCardLike = (card) => {
-  console.log(cardData);
+  // console.log(cardData);
   if (card.cardData.likes.find((user) => user._id === userInfo.getUserId())) {
     api.deleteCardLike(card.getCardId())
       .then((cardData) => {
@@ -114,7 +116,7 @@ export const handleCardLike = (card) => {
       })
   } else {
     api.setCardLike(card.getCardId())
-      .then((card) => {
+      .then((cardData) => {
         card.cardLikeCounter(cardData)
       })
       .catch((err) => {
