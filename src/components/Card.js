@@ -34,8 +34,9 @@ export class Card {
     this._cardImageItem.src = this._link;
     this._cardImageItem.alt = this._name;
     // this._cardlikeCounterItem.textContent = this._likes.lenght;
-    if (this._cardOwnerId !== this._userId) this._cardDeleteItem.classList.toggle('card__btn-del_inactive');
-    if (this._likes.find((user) => user._id === this._userId)) this._cardLikeCounter(this.cardData);
+    if (this._cardOwnerId !== this._userId) this._cardDeleteItem.classList.toggle('card__like-button_inactive');
+    // if (this._likes.find((user) => user._id === this._userId)) this.cardLikeCounter(this.cardData);
+    this.cardLikeCounter(this.cardData);
     this._setEventListener();
     return this._card;
   }
@@ -57,7 +58,11 @@ export class Card {
   }
   // Лайк
   _handleCardLikeButton() {
-    this._cardLikeItem.classList.toggle('cards__like-button_active');
+    if (this.cardData.likes.find((user) => user._id === this._userId)) {
+      this._cardLikeItem.classList.add('cards__like-button_active');
+    } else {
+      this._cardLikeItem.classList.remove('cards__like-button_active');
+    }
   }
   // Открытие карточки
   _handleImageClick() {
@@ -68,7 +73,7 @@ export class Card {
     this.cardData = cardData;
     console.log(this._likes);
     this._cardlikeCounterItem.textContent = cardData.likes.length;
-    this._handleCardLikeButton();
+    this._handleCardLikeButton(cardData);
   }
   // Слушатели
   _setEventListener = () => {
