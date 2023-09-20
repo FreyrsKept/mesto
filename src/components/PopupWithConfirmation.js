@@ -14,10 +14,7 @@ export class PopupWithConfirmation extends Popup {
             evt.preventDefault();
             this._handleFormSubmit();
         });
-        // super.setEventListeners();
-        // this._submitForm.addEventListener('click', () => {
-        //     this._handleFormSubmit();
-        // })
+        super.setEventListeners();
     };
 
     handleFormSubmit(func) {
