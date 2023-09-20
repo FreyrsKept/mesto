@@ -1,5 +1,6 @@
 import './index.css';
 import { Card } from "../components/Card.js";
+import { settings } from "../utils/constants.js"
 import { FormValidator } from "../components/FormValidator.js";
 import { PopupWithImage } from '../components/PopupWithImage.js'
 import { PopupWithForm } from '../components/PopupWithForm.js'
@@ -7,11 +8,6 @@ import { UserInfo } from '../components/UserInfo.js'
 import { Section } from '../components/Section.js'
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import { api } from '../components/Api.js'
-import {
-  handleDeleteClick,
-  handleCardLike,
-  handleCardClick,
-} from '../components/Card.js'
 
 // Берем информацию с сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -29,16 +25,6 @@ export const userInfo = new UserInfo({
   avatarSelector: '.profile__avatar'
 });
 
-// Список классов для валидации
-const settings = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input_type_visible',
-};
-
 // переменные для карточек
 const popupAddCardSelector = '.popup_type_add-card';
 const profileButtonAdd = document.querySelector('.profile__add');
@@ -54,7 +40,7 @@ const profileButtonEdit = document.querySelector('.profile__name-edit');
 // переменные для попапа с просмотром
 const viewPopup = '.popup_type_image-view';
 
-const formValidator = []
+const formValidators = {}
 
 // Валидация форм - //upd
 const enableValidation = (settings) => {
@@ -62,7 +48,7 @@ const enableValidation = (settings) => {
   formList.forEach((formItem) => {
     const validator = new FormValidator(settings, formItem);
     const formName = formItem.getAttribute('name');
-    formValidator[formName] = validator;
+    formValidators[formName] = validator;
     validator.enableValidation()
   });
 };
@@ -77,7 +63,7 @@ const cardList = new Section({
       '.cards__template',
       handleCardClick,
       handleDeleteClick,
-      handleCardLike,
+      UpdateCardLikes,
       userInfo.getUserId(),
     );
     return newCard.create();
@@ -141,20 +127,63 @@ const popupEditAvatar = new PopupWithForm({
 }, editAvatarPopupSelector);
 popupEditAvatar.setEventListeners();
 
+// Удаление карточки
+const handleDeleteClick = (card) => {
+  popupDeleteCard.open();
+  popupDeleteCard.handleFormSubmit(() => {
+    popupDeleteCard.renderLoading(true);
+    api.deleteCard(card.getCardId())
+      .then(() => {
+        card.deleteCard();
+      })
+      .then(() => popupDeleteCard.close())
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => popupDeleteCard.renderLoading(false))
+  })
+}
+
+// Лайк карточки
+const UpdateCardLikes = (card) => {
+  // console.log(cardData);
+  if (card.cardData.likes.find((user) => user._id === userInfo.getUserId())) {
+    api.deleteCardLike(card.getCardId())
+      .then((cardData) => {
+        card.UpdateCardLikes(cardData)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  } else {
+    api.setCardLike(card.getCardId())
+      .then((cardData) => {
+        card.UpdateCardLikes(cardData)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+}
+// функция открытия карточки
+const handleCardClick = (cardTitleItem, cardImageItem) => {
+  popupImage.open(cardTitleItem, cardImageItem);
+}
+
 // Слушатели попапов
 profileButtonAdd.addEventListener('click', () => {
-  formValidator['popup__form-add'].resetValidation()
+  formValidators['popup__form-add'].resetValidation()
   popupAddCard.open();
 })
 
 profileButtonEdit.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   popupEditProfile.setInputValues(userData);
-  formValidator['popup__form-profile'].resetValidation()
+  formValidators['popup__form-profile'].resetValidation()
   popupEditProfile.open();
 })
 
 profileAvatarEdit.addEventListener('click', () => {
-  formValidator['popup__form-avatar'].resetValidation()
+  formValidators['popup__form-avatar'].resetValidation()
   popupEditAvatar.open();
 })
