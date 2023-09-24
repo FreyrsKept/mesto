@@ -8,6 +8,20 @@ import { UserInfo } from '../components/UserInfo.js'
 import { Section } from '../components/Section.js'
 import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import { api } from '../components/Api.js'
+import {
+  // переменные для карточек
+  popupAddCardSelector,
+  profileButtonAdd,
+  cardsContainerSelector,
+  deleteCardPopupSelector,
+  // переменные для изменения профиля
+  editAvatarPopupSelector,
+  profileAvatarEdit,
+  editProfilePopupSelector,
+  profileButtonEdit,
+  // переменные для попапа с просмотром
+  viewPopup
+} from "../utils/constants.js"
 
 // Берем информацию с сервера
 Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -24,21 +38,6 @@ export const userInfo = new UserInfo({
   jobSelector: '.profile__description',
   avatarSelector: '.profile__avatar'
 });
-
-// переменные для карточек
-const popupAddCardSelector = '.popup_type_add-card';
-const profileButtonAdd = document.querySelector('.profile__add');
-const cardsContainerSelector = '.cards__list';
-const deleteCardPopupSelector = '.popup_type_card-delete';
-
-// переменные для изменения профиля
-const editAvatarPopupSelector = '.popup_type_avatar-edit';
-const profileAvatarEdit = document.querySelector('.profile__avatar-edit');
-const editProfilePopupSelector = '.popup_type_profile';
-const profileButtonEdit = document.querySelector('.profile__name-edit');
-
-// переменные для попапа с просмотром
-const viewPopup = '.popup_type_image-view';
 
 const formValidators = {}
 
@@ -63,7 +62,7 @@ const cardList = new Section({
       '.cards__template',
       handleCardClick,
       handleDeleteClick,
-      UpdateCardLikes,
+      updateCardLikes,
       userInfo.getUserId(),
     );
     return newCard.create();
@@ -145,12 +144,12 @@ const handleDeleteClick = (card) => {
 }
 
 // Лайк карточки
-const UpdateCardLikes = (card) => {
+const updateCardLikes = (card) => {
   // console.log(cardData);
   if (card.cardData.likes.find((user) => user._id === userInfo.getUserId())) {
     api.deleteCardLike(card.getCardId())
       .then((cardData) => {
-        card.UpdateCardLikes(cardData)
+        card.updateCardLikes(cardData)
       })
       .catch((err) => {
         console.log(err);
@@ -158,7 +157,7 @@ const UpdateCardLikes = (card) => {
   } else {
     api.setCardLike(card.getCardId())
       .then((cardData) => {
-        card.UpdateCardLikes(cardData)
+        card.updateCardLikes(cardData)
       })
       .catch((err) => {
         console.log(err);
